@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import notFound from "./not-found";
 import Header from "@/app/components/global/Header";
+import Footer from "@/app/components/global/Footer";
 
 export const metadata: Metadata = {
   title: "Madaniy Meros",
@@ -35,7 +36,8 @@ export default async function RootLayout({ children, params }: Props) {
       timeZone="Asia/Tashkent"
     >
       <Header />
-      <main className="flex items-center justify-center flex-col h-full bg-white">{children}</main>
+      <main className="">{children}</main>
+      <Footer />
     </NextIntlClientProvider>
   );
 }

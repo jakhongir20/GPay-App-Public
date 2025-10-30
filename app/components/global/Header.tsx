@@ -5,7 +5,7 @@ export default function Header() {
     { href: "/", label: "Главная" },
     { href: "/cabinet", label: "Платежные решения" },
     { href: "/about", label: "О компании" },
-    { href: "/teams", label: "Разработчикам" },
+    { href: "/team", label: "Разработчикам" },
     { href: "#", label: "Партнерам" },
     { href: "#", label: "Помощь" },
   ];
@@ -15,7 +15,6 @@ export default function Header() {
       <div className="container-custom h-full">
         <div className="flex h-full items-center justify-between">
           <Link href="/" className="flex h-11 items-center">
-            {/* Use absolute path from public/ to avoid locale prefix */}
             <img src="/images/Logo.svg" alt="Global Pay Logo" className="h-9" />
           </Link>
 

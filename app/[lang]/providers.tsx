@@ -1,6 +1,6 @@
 // app/[lang]/providers.tsx  (АСИНХРОННЫЙ, загружает сообщения)
 
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider } from "next-intl";
 import { ReactNode } from "react";
 
 export default async function Providers({

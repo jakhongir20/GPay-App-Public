@@ -31,9 +31,9 @@ export const FaqSection: FC<Props> = ({ className }) => {
                       <path
                         d="M12 4L4 12"
                         stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M4 4L12 12"
