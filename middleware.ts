@@ -1,27 +1,13 @@
-import { NextResponse, type NextRequest } from "next/server";
+import createMiddleware from "next-intl/middleware";
 
-const locales = ["en", "ru", "uz"];
-const defaultLocale = "en";
-
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  if (pathname.startsWith("/_next") || pathname.startsWith("/api") || /\.[\w]+$/.test(pathname)) {
-    return NextResponse.next();
-  }
-
-  const pathLocale = pathname.split("/")[1];
-  if (locales.includes(pathLocale)) {
-    return NextResponse.next();
-  }
-
-  const url = request.nextUrl.clone();
-  url.pathname = `/${defaultLocale}${pathname}`;
-  return NextResponse.redirect(url);
-}
+export default createMiddleware({
+  locales: ["ru", "uz", "en"],
+  defaultLocale: "ru",
+  localeDetection: true,
+});
 
 export const config = {
-  matcher: ["/:path*"],
+  matcher: [
+    "/((?!auth/social-callback|auth/social-error|api|_next/static|_next/image|favicon.ico|robots.txt|sitemap.xml|images|assets).*)",
+  ],
 };
-
-

@@ -1,19 +1,28 @@
+import Link from "next/link";
+
 export default function Header() {
+  const MENU_ITEMS = [
+    { href: "/", label: "Главная" },
+    { href: "/cabinet", label: "Платежные решения" },
+    { href: "/about", label: "О компании" },
+    { href: "/teams", label: "Разработчикам" },
+    { href: "#", label: "Партнерам" },
+    { href: "#", label: "Помощь" },
+  ];
+
   return (
     <header className="header-main">
       <div className="container-custom h-full">
         <div className="flex h-full items-center justify-between">
-          <a href="index.html" className="flex h-11 items-center">
+          <Link href="/" className="flex h-11 items-center">
+            {/* Use absolute path from public/ to avoid locale prefix */}
             <img src="/images/Logo.svg" alt="Global Pay Logo" className="h-9" />
-          </a>
+          </Link>
 
           <nav className="nav-menu" id="navMenu">
-            <a href="#" className="nav-link">Главная</a>
-            <a href="#" className="nav-link">Платежные решения</a>
-            <a href="#" className="nav-link">О компании</a>
-            <a href="#" className="nav-link">Разработчикам</a>
-            <a href="#" className="nav-link">Партнерам</a>
-            <a href="#" className="nav-link">Помощь</a>
+            {MENU_ITEMS.map((item, index) => (
+              <Link key={index} href={item.href} className="nav-link">{item.label}</Link>
+            ))}
             <br />
             <div
               className="header-actions header-actions-mobile z-50 flex xs:!hidden"
