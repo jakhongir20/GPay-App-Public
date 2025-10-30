@@ -1,0 +1,12 @@
+.next
+node_modules
+dist
+build
+
+.next
+node_modules
+build
+out
+package-lock.json
+
+
