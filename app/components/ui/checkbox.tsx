@@ -30,13 +30,14 @@ export const Checkbox = ({ id, label, checked, onChange, disabled, className }: 
           "grid h-5 w-5 place-items-center rounded ",
           " bg-[#272727]",
           "shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
-          "transition-colors duration-150",
+          "",
+          // transition-colors duration-150
           // hover/focus
-          "peer-hover:border-neutral-500",
+          "",
           "peer-focus-visible:outline peer-focus-visible:outline-2",
           "peer-focus-visible:outline-offset-2 peer-focus-visible:outline-button-primary",
           // checked
-          "peer-checked:bg-button-primary peer-checked:border-button-primary",
+          "peer-checked:border peer-checked:border-button-primary",
           // disabled
           "peer-disabled:opacity-50 peer-disabled:cursor-not-allowed",
         ].join(" ")}

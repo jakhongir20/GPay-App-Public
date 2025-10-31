@@ -5,55 +5,33 @@ interface Props {
   className?: string;
 }
 
-export const LegalInformationStep: FC<Props> = ({ className }) => {
+export const AboutProjectStep: FC<Props> = ({ className }) => {
   return (
     <section>
       <div className="flex flex-col">
         <h2 className="text-section-title mb-6 max-w-[600px]">
-          Юридическая информация
+          О проекте
         </h2>
         <p className="text-section-subtitle">
-          Заполните ваши юридические данные
+          Расскажите нам о своем бизнесе как можно подробнее
         </p>
       </div>
       <hr className={"border w-full border-[#1C1C1C] my-8"} />
       <div className={"p-6 bg-[#141414] rounded-xl"}>
-        <div className={"flex sm:flex-row flex-col sm:items-center justify-between gap-2 mb-8"}>
-          <h4 className={"text-xl text-text-primary "}>Юридическая информация</h4>
-          <div className={"flex gap-3 items-center"}>
-            <div className={"rounded-[40px] bg-[rgba(138,225,106,0.10)] min-w-6 h-6 flex items-center justify-center"}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8.5L7 12.5L13 3.5" stroke="#8AE16A" stroke-width="1.5" stroke-linecap="round"
-                      stroke-linejoin="round" />
-              </svg>
-            </div>
-            <span className={"text-[#8AE16A]"}>Заполнено автоматически</span>
-          </div>
-        </div>
+        <h4 className={"text-xl text-text-primary mb-8"}>На каком этапе ваш проект сейчас?</h4>
+        <button className={"bg-button-primary px-3 py-2 text-sm rounded-lg"}>Проект работает</button>
+        <br />
+        <br />
         <form className="w-full space-y-6">
           <div>
             <label
               className="mb-2 block text-base tracking-[-0.16px] text-white/60"
             >
-              Брендовое название <span className="text-text-primary">*</span>
+              Ссылка на демонстрацию <span className="text-text-primary">*</span>
             </label>
             <div className="relative">
               <input
-                placeholder={"Например: «Global Pay»"}
-                className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
-              />
-            </div>
-            <Checkbox id={"legalName"} className={"mt-4"} label={"Совпадает с юридическим названием"} />
-          </div>
-          <div>
-            <label
-              className="mb-2 block text-base tracking-[-0.16px] text-white/60"
-            >
-              Полное наименование юр. лица <span className="text-text-primary">*</span>
-            </label>
-            <div className="relative">
-              <input
-                placeholder={"Например: ООО «Global Pay»"}
+                placeholder={"https/"}
                 className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
               />
             </div>
@@ -62,12 +40,52 @@ export const LegalInformationStep: FC<Props> = ({ className }) => {
             <label
               className="mb-2 block text-base tracking-[-0.16px] text-white/60"
             >
-              ФИО Директора <span className="text-text-primary">*</span>
+              Расскажите про ваш проект
             </label>
             <div className="relative">
-              <input
-                placeholder={"Введите ФИО директора"}
+              <textarea
+                placeholder={"Напишите детальное описание, чтобы мы смогли подобрать для вас лучшее решение "}
                 className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
+              />
+            </div>
+            <small className={"text-[rgba(237,237,237,0.60)] text-xs"}>Расскажите об особенностях, при помощи чего там и
+              туда сюда и т.д.</small>
+          </div>
+          {/*second title*/}
+          <br />
+          <h4 className={"text-xl text-text-primary mb-8"}>С какими платежными сервисами работаете сейчас?</h4>
+          <div>
+            <div className="relative">
+              <input
+                placeholder={"Например: Robokassa, Click и др."}
+                className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
+              />
+            </div>
+            <Checkbox id={"demo"} label={"Нет платежных сервисов"} className={"mt-4"} />
+          </div>
+          {/*third title*/}
+          <br />
+          <h4 className={"text-xl text-text-primary mb-8"}>Интеграции и сервисы</h4>
+          <div>
+            <label
+              className="mb-2 block text-base tracking-[-0.16px] text-white/60"
+            >
+              Через какие каналы принимаете оплату? <span className="text-text-primary">*</span>
+            </label>
+            <div className="relative">
+              <select
+                className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
+
+              >
+                <option value="">Резидент Республики Узбекистан</option>
+                <option value="bank">Банк</option>
+                <option value="mfo">МФО</option>
+                <option value="other">Другое</option>
+              </select>
+              <img
+                src="/images/icon/arrow-down.svg"
+                alt="Dropdown"
+                className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2"
               />
             </div>
           </div>
@@ -76,42 +94,27 @@ export const LegalInformationStep: FC<Props> = ({ className }) => {
               className="mb-2 block text-base tracking-[-0.16px] text-white/60"
             >
               <div className={"flex gap-1"}>
-                ОКЭД <span className="text-text-primary">*</span>
-                <p className={"mt-1 ml-1"}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8ZM9 11.5C9 12.0523 8.55228 12.5 8 12.5C7.44772 12.5 7 12.0523 7 11.5C7 10.9477 7.44772 10.5 8 10.5C8.55228 10.5 9 10.9477 9 11.5ZM7.29303 5.29289C7.68355 4.90237 8.31671 4.90237 8.70724 5.29289C9.09776 5.68342 9.09776 6.31658 8.70724 6.70711C8.58354 6.83081 8.43743 6.91429 8.2827 6.95959C7.82404 7.09387 7.25013 7.52576 7.25013 8.25V8.50022C7.25013 8.91444 7.58592 9.25022 8.00013 9.25022C8.41435 9.25022 8.75013 8.91444 8.75013 8.50022V8.38522C9.12313 8.26818 9.47391 8.06176 9.7679 7.76777C10.7442 6.79146 10.7442 5.20854 9.7679 4.23223C8.79159 3.25592 7.20868 3.25592 6.23237 4.23223C5.93947 4.52513 5.93947 5 6.23237 5.29289C6.52526 5.58579 7.00013 5.58579 7.29303 5.29289Z"
-                          fill="#EDEDED" fill-opacity="0.6" />
-                  </svg>
-                </p>
+                Нужна ли интеграция CMS/Платформами ? <span className="text-text-primary">*</span>
               </div>
             </label>
-            <div className="relative">
-              <input
-                placeholder={"Введите ОКЭД"}
-                className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
-              />
+            <div className="relative flex gap-1">
+              <button className={"btn-primary px-3"}>Да</button>
+              <button className={"btn-user rounded-lg px-3"}>Нет</button>
             </div>
-          </div>
-          <div>
-            <label
-              className="mb-2 block text-base tracking-[-0.16px] text-white/60"
-            >
-              <div className={"flex gap-1"}>
-                Регион/район (SOATO) <span className="text-text-primary">*</span>
-                <p className={"mt-1 ml-1"}>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                    <path fill-rule="evenodd" clip-rule="evenodd"
-                          d="M15 8C15 11.866 11.866 15 8 15C4.13401 15 1 11.866 1 8C1 4.13401 4.13401 1 8 1C11.866 1 15 4.13401 15 8ZM9 11.5C9 12.0523 8.55228 12.5 8 12.5C7.44772 12.5 7 12.0523 7 11.5C7 10.9477 7.44772 10.5 8 10.5C8.55228 10.5 9 10.9477 9 11.5ZM7.29303 5.29289C7.68355 4.90237 8.31671 4.90237 8.70724 5.29289C9.09776 5.68342 9.09776 6.31658 8.70724 6.70711C8.58354 6.83081 8.43743 6.91429 8.2827 6.95959C7.82404 7.09387 7.25013 7.52576 7.25013 8.25V8.50022C7.25013 8.91444 7.58592 9.25022 8.00013 9.25022C8.41435 9.25022 8.75013 8.91444 8.75013 8.50022V8.38522C9.12313 8.26818 9.47391 8.06176 9.7679 7.76777C10.7442 6.79146 10.7442 5.20854 9.7679 4.23223C8.79159 3.25592 7.20868 3.25592 6.23237 4.23223C5.93947 4.52513 5.93947 5 6.23237 5.29289C6.52526 5.58579 7.00013 5.58579 7.29303 5.29289Z"
-                          fill="#EDEDED" fill-opacity="0.6" />
-                  </svg>
-                </p>
-              </div>
-            </label>
-            <div className="relative">
-              <input
-                placeholder={"Введите регион/район"}
+            <div className="relative mt-4">
+              <select
                 className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
+
+              >
+                <option value="">Резидент Республики Узбекистан</option>
+                <option value="bank">Банк</option>
+                <option value="mfo">МФО</option>
+                <option value="other">Другое</option>
+              </select>
+              <img
+                src="/images/icon/arrow-down.svg"
+                alt="Dropdown"
+                className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2"
               />
             </div>
           </div>
@@ -120,18 +123,51 @@ export const LegalInformationStep: FC<Props> = ({ className }) => {
             <label
               className="mb-2 block text-base tracking-[-0.16px] text-white/60"
             >
-              Юридический адрес <span className="text-text-primary">*</span>
+              Желаемый тип интеграции
+              <span className="text-text-primary">*</span>
             </label>
             <div className="relative">
-              <input
-                placeholder={"Введите юридический адрес"}
+              <select
                 className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
+
+              >
+                <option value="">Резидент Республики Узбекистан</option>
+                <option value="bank">Банк</option>
+                <option value="mfo">МФО</option>
+                <option value="other">Другое</option>
+              </select>
+              <img
+                src="/images/icon/arrow-down.svg"
+                alt="Dropdown"
+                className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2"
               />
             </div>
-            <small className={"text-[rgba(237,237,237,0.60)] text-xs"}>Укажите адрес регистрации компании, как в
-              учредительных
-              документах</small>
           </div>
+          <div>
+            <label
+              className="mb-2 block text-base tracking-[-0.16px] text-white/60"
+            >
+              Какие дополнительные функции вам нужны?
+              <span className="text-text-primary">*</span>
+            </label>
+            <div className="relative">
+              <select
+                className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
+
+              >
+                <option value="">Резидент Республики Узбекистан</option>
+                <option value="bank">Банк</option>
+                <option value="mfo">МФО</option>
+                <option value="other">Другое</option>
+              </select>
+              <img
+                src="/images/icon/arrow-down.svg"
+                alt="Dropdown"
+                className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2"
+              />
+            </div>
+          </div>
+
         </form>
       </div>
       {/*  form action*/}
