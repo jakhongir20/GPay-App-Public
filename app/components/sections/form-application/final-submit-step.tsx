@@ -1,20 +1,11 @@
 "use client";
-import { FC, useState } from "react";
+import { FC } from "react";
 
 interface Props {
   className?: string;
 }
 
 export const FinalSubmitStep: FC<Props> = ({ className }) => {
-  const [cards, setCards] = useState<Record<string, boolean>>({
-    humo: true,
-    uzcard: true,
-    visa: false,
-    mastercard: false,
-  });
-
-  const toggle = (key: keyof typeof cards) =>
-    setCards((s) => ({ ...s, [key]: !s[key] }));
 
   return (
     <section>
