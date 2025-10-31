@@ -1,14 +1,46 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
+
+const MENU_ITEMS = [
+  { href: "/", label: "Главная" },
+  { href: "/cabinet", label: "Платежные решения" },
+  { href: "/about", label: "О компании" },
+  { href: "/team", label: "Разработчикам" },
+  { href: "/form-application", label: "Партнерам" },
+  { href: "#", label: "Помощь" },
+];
+
+const LOCALES = ["uz", "ru", "en"] as const;
+const LOCALE_LABELS: Record<string, string> = {
+  uz: "UZ",
+  ru: "RU",
+  en: "EN",
+};
 
 export default function Header() {
-  const MENU_ITEMS = [
-    { href: "/", label: "Главная" },
-    { href: "/cabinet", label: "Платежные решения" },
-    { href: "/about", label: "О компании" },
-    { href: "/team", label: "Разработчикам" },
-    { href: "#", label: "Партнерам" },
-    { href: "#", label: "Помощь" },
-  ];
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleToggle = () => {
+    // Get current path segments
+    const segments = pathname.split("/").filter(Boolean);
+    const currentLang = segments[0];
+
+    // Find next language in cycle: uz -> ru -> en -> uz
+    const currentIndex = LOCALES.indexOf(currentLang as any);
+    const nextIndex = (currentIndex + 1) % LOCALES.length;
+    const nextLang = LOCALES[nextIndex];
+
+    // Rebuild path with new lang
+    const pathWithoutLang = segments.slice(1).join("/");
+    const newPath = `/${nextLang}${pathWithoutLang ? "/" + pathWithoutLang : ""}`;
+
+    router.push(newPath);
+  };
 
   return (
     <header className="header-main">
@@ -28,13 +60,14 @@ export default function Header() {
             >
               <button
                 className="btn-language !xs:w-[84px] relative !w-[76px] overflow-hidden"
+                onClick={handleToggle}
               >
                 <img
                   src="/images/globe.svg"
                   alt="Globe"
                   className="!xs:-left-[5%] absolute -left-[12%] top-1/2 -translate-y-1/2"
                 />
-                <span className="text-base xs:text-lg">UZ</span>
+                <span className="text-base xs:text-lg">{LOCALE_LABELS[locale] || "UZ"}</span>
               </button>
 
               <button
@@ -52,13 +85,14 @@ export default function Header() {
           <div className="header-actions">
             <button
               className="btn-language relative hidden !w-[84px] overflow-hidden xs:flex"
+              onClick={handleToggle}
             >
               <img
                 src="/images/globe.svg"
                 alt="Globe"
                 className="absolute -left-[5%] top-1/2 -translate-y-1/2"
               />
-              <span className="">UZ</span>
+              <span className="">{LOCALE_LABELS[locale] || "UZ"}</span>
             </button>
 
             <button className="btn-primary">Подключить</button>

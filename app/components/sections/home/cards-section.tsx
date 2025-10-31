@@ -1,10 +1,12 @@
 import { FC } from "react";
+import { useTranslations } from "next-intl";
 
 interface Props {
   className?: string;
 }
 
 export const CardsSection: FC<Props> = ({ className }) => {
+  const t = useTranslations();
   return (
     <section className="section-padding mt-6">
       <div className="container-custom">
@@ -17,7 +19,8 @@ export const CardsSection: FC<Props> = ({ className }) => {
             <h1
               className="text-[32px] font-bold leading-[40px] text-text-primary xs:text-[40px] md:text-[54px] md:leading-[56px]"
             >
-              Сервис онлайн оплат для бизнеса
+              {t("HomePage.CardsSection.Title")}
+              {/*Сервис онлайн оплат для бизнеса*/}
             </h1>
             <p
               className="max-w-[277px] text-lg font-normal leading-[26px] text-white/60"

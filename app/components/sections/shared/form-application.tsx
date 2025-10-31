@@ -2,9 +2,10 @@ import { FC } from "react";
 
 interface Props {
   className?: string;
+  formAreasActivity?: boolean;
 }
 
-export const FormSection: FC<Props> = ({ className }) => {
+export const FormApplication: FC<Props> = ({ className, formAreasActivity = true }) => {
   return (
     <section className="section-padding py-16">
       <div className="container-custom">
@@ -71,7 +72,7 @@ export const FormSection: FC<Props> = ({ className }) => {
                   </div>
                 </div>
 
-                <div>
+                {formAreasActivity && <div>
                   <label
                     className="mb-2 block text-base tracking-[-0.16px] text-white/60"
                   >
@@ -92,7 +93,7 @@ export const FormSection: FC<Props> = ({ className }) => {
                       className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2"
                     />
                   </div>
-                </div>
+                </div>}
                 <hr className="border-[#232323]" />
 
                 <div

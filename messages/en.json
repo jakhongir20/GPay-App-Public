@@ -1,4 +1,9 @@
 {
+  "HomePage": {
+    "CardsSection": {
+      "Title": "Online payment service for business"
+    }
+  },
   "brand": "Global Pay",
   "nav": {
     "home": "Home",

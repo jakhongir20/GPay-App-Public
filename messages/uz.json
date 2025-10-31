@@ -1,4 +1,9 @@
 {
+  "HomePage": {
+    "CardsSection": {
+      "Title": "Biznes uchun onlayn to'lov xizmati"
+    }
+  },
   "brand": "Global Pay",
   "nav": {
     "home": "Bosh sahifa",
