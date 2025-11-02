@@ -6,6 +6,7 @@ import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { SwiperNavigation } from "@/app/components/shared/SwiperNavigation";
 import { FilterButtonGroup } from "@/app/components/shared/FilterButtonGroup";
+import { cn } from "@/app/shared/helpers/helper-functions";
 
 // Import Swiper styles
 import "swiper/css";
@@ -78,6 +79,8 @@ const categories = [
 export const CasesSection: FC<Props> = ({ className }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeCategory, setActiveCategory] = useState(0);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
   const filterItems = categories.map((cat, index) => ({
     label: cat.label,
@@ -85,6 +88,11 @@ export const CasesSection: FC<Props> = ({ className }) => {
     active: activeCategory === index,
     onClick: () => setActiveCategory(index),
   }));
+
+  const updateNavigationState = (swiper: SwiperType) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+  };
 
   return (
     <section className="section-padding">
@@ -116,17 +124,22 @@ export const CasesSection: FC<Props> = ({ className }) => {
             <Swiper
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
+                updateNavigationState(swiper);
+              }}
+              onSlideChange={(swiper) => {
+                updateNavigationState(swiper);
               }}
               modules={[Navigation]}
               spaceBetween={24}
-              slidesPerView={1.4}
+              slidesPerView={1.2}
+              loop={false}
               breakpoints={{
                 640: {
-                  slidesPerView: 1.4,
+                  slidesPerView: 1.2,
                   spaceBetween: 24,
                 },
                 768: {
-                  slidesPerView: 2.4,
+                  slidesPerView: 2.3,
                   spaceBetween: 48,
                 },
                 1024: {
@@ -136,9 +149,14 @@ export const CasesSection: FC<Props> = ({ className }) => {
               }}
               className="!pb-4"
             >
-              {cases.map((caseItem) => (
+              {cases.map((caseItem, index) => (
                 <SwiperSlide key={caseItem.id} className="!h-auto">
-                  <div className="flex h-full flex-col items-start">
+                  <div
+                    className={cn(
+                      "flex h-full flex-col items-start relative",
+                      index > 0 && "before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-[#232323] before:content-[''] before:-ml-6 md:before:-ml-12",
+                    )}
+                  >
                     <div className="mb-3 h-[310px] w-full rounded-lg bg-[#1D1D1D]">
                       {caseItem.image && (
                         <img
@@ -175,7 +193,11 @@ export const CasesSection: FC<Props> = ({ className }) => {
               ))}
             </Swiper>
 
-            <SwiperNavigation swiperRef={swiperRef} />
+            <SwiperNavigation
+              swiperRef={swiperRef}
+              disabledPrev={isBeginning}
+              disabledNext={isEnd}
+            />
           </div>
         </div>
       </div>
