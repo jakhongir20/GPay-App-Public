@@ -96,7 +96,7 @@ export const FaqSection: FC<Props> = ({ className }) => {
                             fill="none"
                           >
                             <path d="M6 18L18 6M6 6L18 18" stroke="#F2F2F2" strokeWidth="1.5" strokeLinecap="round"
-                                  strokeLinejoin="round" />
+                              strokeLinejoin="round" />
                           </svg>
                         ) : (
                           <svg
@@ -127,7 +127,7 @@ export const FaqSection: FC<Props> = ({ className }) => {
                       <div>
                         {item.answer.map((text, textIndex) => (
                           <PText key={textIndex}
-                                 className={item.answer?.length - 1 === textIndex ? "mb-0" : ""}>{text}</PText>
+                            className={item.answer?.length - 1 === textIndex ? "mb-0" : ""}>{text}</PText>
                         ))}
                       </div>
                     </div>

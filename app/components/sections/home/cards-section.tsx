@@ -15,22 +15,25 @@ export const CardsSection: FC<Props> = ({ className }) => {
           className="grid auto-rows-[minmax(280px,auto)] grid-cols-1 gap-4 sm:grid-cols-1 lg:grid-cols-[1.6fr_1fr] xl:grid-cols-[1.6fr_1fr_1.1fr]"
         >
           <div
-            className="flex flex-col justify-between gap-10 rounded-xl border border-[#222222] bg-[linear-gradient(180deg,_rgba(22,22,22,0)_0%,_#161616_100%),_#161616] p-6 xs:gap-24 xs:p-8 md:gap-32 md:p-10 lg:col-start-1 lg:row-span-2 lg:row-start-1 xl:col-start-1 xl:row-span-2 xl:row-start-1"
+            className="flex overflow-hidden relative flex-col justify-between gap-10 rounded-xl border border-[#222222] bg-[linear-gradient(180deg,_rgba(22,22,22,0)_0%,_#161616_100%),_#161616] p-6 xs:gap-24 xs:p-8 md:gap-32 md:p-10 lg:col-start-1 lg:row-span-2 lg:row-start-1 xl:col-start-1 xl:row-span-2 xl:row-start-1"
           >
+            <div
+              className="absolute inset-0 pointer-events-none bg-left-top bg-no-repeat bg-contain"
+              style={{ backgroundImage: "url('/images/main/grid.png')", backgroundRepeat: "repeat" }}
+              aria-hidden="true"
+            />
             <h1
-              className="text-[32px] font-bold leading-[40px] text-text-primary xs:text-[40px] md:text-[54px] md:leading-[56px]"
+              className="text-[32px] relative font-bold leading-[40px] text-text-primary xs:text-[40px] md:text-[54px] md:leading-[56px]"
             >
               {t("HomePage.CardsSection.Title")}
-              {/*Сервис онлайн оплат для бизнеса*/}
             </h1>
             <p
-              className="max-w-[277px] text-lg font-normal leading-[26px] text-white/60"
+              className="max-w-[277px] relative text-lg font-normal leading-[26px] text-white/60"
             >
               Предоставляем надежные платежные решения закрывающие проблемы
               вашего бизнеса
             </p>
           </div>
-
           <div
             className="rounded-xl bg-card-bg px-4 py-6 lg:col-start-2 lg:row-start-1 xl:col-start-2 xl:row-start-1"
           >
@@ -50,7 +53,7 @@ export const CardsSection: FC<Props> = ({ className }) => {
               </div>
               <div>
                 <h2
-                  className="mb-3 max-w-[235px] text-2xl leading-[27px] text-text-primary"
+                  className="mb-3 xl:max-w-[235px] text-2xl leading-[27px] text-text-primary"
                 >
                   Помощь с подключением
                 </h2>
@@ -108,7 +111,7 @@ export const CardsSection: FC<Props> = ({ className }) => {
                 </p>
                 <div className="flex items-center justify-between gap-2">
                   <h2
-                    className="max-w-[235px] text-2xl leading-[27px] text-text-primary"
+                    className="xl:max-w-[235px] text-2xl leading-[27px] text-text-primary"
                   >
                     Рассчитайте тариф для вашего бизнеса
                   </h2>
@@ -138,13 +141,32 @@ export const CardsSection: FC<Props> = ({ className }) => {
             <h2></h2>
           </div>
 
+          {/*width: 2002.727px;*/}
+          {/*height: 2022px;*/}
+          {/*transform: rotate(125.397deg);*/}
+          {/*flex-shrink: 0;*/}
           <div
-            className="flex relative flex-col justify-between rounded-xl bg-card-bg px-4 py-6 lg:col-span-2 lg:row-start-3 xl:col-span-1 xl:col-start-3 xl:row-span-2 xl:row-start-1"
+            className="flex relative overflow-hidden flex-col justify-between rounded-xl bg-card-bg px-4 py-6 lg:col-span-2 lg:row-start-3 xl:col-span-1 xl:col-start-3 xl:row-span-2 xl:row-start-1"
           >
-            <img className={"absolute top-7 left-1/2 -translate-x-1/2 w-[95%]"} src="/images/main/line-graphs.svg"
-                 alt="" />
+            <div
+              className={"absolute left-10 -top-[20%] flex-shrink-0 w-[2002px] h-[2022px]"}
+              style={{
+                background: "linear-gradient(180deg, #E9532F 0%, rgba(22, 22, 22, 0.00) 100%)",
+                transform: "rotate(125.397deg)",
+              }}
+            ></div>
+            <div
+              className={"absolute left-0 top-0 flex-shrink-0 w-full h-[302px]"}
+              style={{
+                background: "linear-gradient(180deg, #161616 0%, rgba(22, 22, 22, 0.00) 100%)",
+              }}
+            ></div>
+            <img
+              className={"xs:absolute xl:top-7 top-0 xl:py-0 xs:py-2 h-full left-0 xl:h-auto xl:left-1/2 object-contain xl:-translate-x-1/2 xl:w-[95%]"}
+              src="/images/main/line-graphs.svg"
+              alt="" />
             <div></div>
-            <div className="mb-2">
+            <div className="mb-2 mt-4 xs:ml-auto xl:ml-0">
               <p
                 className="mb-2 max-w-[235px] text-sm tracking-[0.5px] text-white/60"
               >
