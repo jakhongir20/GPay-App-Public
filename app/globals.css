@@ -10,6 +10,30 @@
   }
 }
 
+@layer utilities {
+  /* фон-полосы */
+  .bg-stripes {
+    background-image: repeating-linear-gradient(
+        135deg, /* угол наклона */ rgba(255, 255, 255, 0.06) 0 10px, /* светлая полоса */ transparent 20px 30px /* зазор */
+    );
+    background-size: 40px 40px;
+  }
+
+  /* анимация сдвига фона */
+  @keyframes stripes-pan {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: 40px 0;
+    }
+  }
+  .animate-stripes {
+    animation: stripes-pan 1.6s linear infinite;
+  }
+}
+
+
 /* Helvetica Neue Utility Class */
 .font-helvetica-neue {
   font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;

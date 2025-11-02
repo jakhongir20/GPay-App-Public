@@ -1,222 +1,121 @@
-import { FC } from "react";
+"use client";
+
+import React, { FC, useState } from "react";
 
 interface Props {
   className?: string;
 }
 
 export const RateCalculatorSection: FC<Props> = ({ className }) => {
+  const [selectedCurrency, setSelectedCurrency] = useState<"uzs" | "usd">("uzs");
+  const [selectedTurnover, setSelectedTurnover] = useState<"100" | "500" | "1000" | "5000">("500");
+
+  const currencies = [
+    { value: "uzs", label: "Узбекский сум" },
+    { value: "usd", label: "Доллар США" },
+  ];
+
+  const turnovers = [
+    { value: "100", label: "до 100 млн" },
+    { value: "500", label: "до 500 млн" },
+    { value: "1000", label: "до 1 млрд" },
+    { value: "5000", label: "до 5 млрд" },
+  ];
+
+  const items = [
+    { card: "Uzcard", rate1: "1%", icon: "/images/payment/uzcard.svg" },
+    { card: "Humo", rate1: "1%", rate2: "0,5%", icon: "/images/payment/humo.svg" },
+    { card: "Visa", rate1: "2%", rate2: "0,5%", icon: "/images/payment/visa.svg" },
+    { card: "Mastercard", rate1: "2%", rate2: "0,5%", icon: "/images/payment/mastercard.svg" },
+    { card: "MIR", rate1: "2%", rate2: "0,5%", icon: "/images/payment/mir.svg" },
+    { card: "UnionPay", rate1: "2%", rate2: "0,5%", icon: "/images/payment/unionpay.svg" },
+  ];
+
   return (
     <section className="section-padding">
       <div className="container-custom">
-        <section className="rounded-xl bg-card-bg p-16">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-            <div className="flex flex-col">
-              <h2 className="text-hero-title mb-12">
-                Рассчитайте свою процентную ставку к тарифу
-              </h2>
-
-              <div className="mb-8">
-                <p className="mb-4 text-lg leading-[26px] text-white/60">
-                  Выберите валюту
-                </p>
-                <div className="flex gap-3">
-                  <button
-                    className="btn-primary rounded-[34px] px-6 py-3 text-sm font-medium"
-                  >
-                    Узбекский сум
-                  </button>
-                  <button
-                    className="btn-black px-6 py-3 text-sm font-medium text-white"
-                  >
-                    Доллар США
-                  </button>
+        <section className="section-content">
+          <div className={"flex justify-between items-center"}>
+            <h2 className="text-section-title max-w-[500px]">
+              Рассчитайте свою процентную ставку к тарифу
+            </h2>
+            <p
+              className="mb-12 text-right text-lg leading-[26px] text-white/60 lg:max-w-[328px] lg:self-end"
+            >
+              Для оборотов <span className="text-white"> от 500 млн</span> действует выгодная
+              <span className="text-white"> тарифная скидка</span> для
+              некоторых типов карт
+            </p>
+          </div>
+          <hr className={"border-white/10 my-10"} />
+          <div className="flex justify-between gap-4">
+            <section className={"max-w-[600px] w-full"}>
+              <h3 className={"text-[#F2F2F2] text-2xl mb-4"}>Выберите валюту</h3>
+              <div className={"bg-[#282828] flex items-center gap-1 rounded-2xl p-2 w-full"}>
+                <div
+                  className={"h-[86px] flex items-center text-lg text-[#F2F2F2] justify-center rounded-2xl w-full bg-button-primary"}>Узбекский
+                  сум
+                </div>
+                <div
+                  className={"h-[86px] flex items-center text-lg text-[#F2F2F2] justify-center w-full rounded-2xl"}>Доллар
+                  США
                 </div>
               </div>
-
-              <div className="mb-12">
-                <p className="mb-4 text-lg leading-[26px] text-white/60">
-                  Укажите оборот в год
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <button
-                    className="btn-black px-6 py-3 text-sm font-medium text-white"
-                  >
-                    до 100 млн
-                  </button>
-                  <button
-                    className="btn-primary rounded-[34px] px-6 py-3 text-sm font-medium"
-                  >
-                    до 500 млн
-                  </button>
-                  <button
-                    className="btn-black px-6 py-3 text-sm font-medium text-white"
-                  >
-                    до 1 млрд
-                  </button>
-                  <button
-                    className="btn-black px-6 py-3 text-sm font-medium text-white"
-                  >
-                    до 5 млрд
-                  </button>
+              <h3 className={"text-[#F2F2F2] text-2xl mb-4 mt-10"}>Выберите валюту</h3>
+              <div className={"border border-[#282828] rounded-2xl flex items-center gap-1 p-2 w-full"}>
+                <div
+                  className={"h-[118px] flex items-center text-lg text-[#F2F2F2] justify-center rounded-lg px-5 bg-button-primary"}>
+                  до 100 млн
+                </div>
+                <div
+                  className={"h-[118px] flex items-center text-lg text-[#F2F2F2] justify-center px-5 rounded-lg bg-[#363636]"}>
+                  до 500 млн
+                </div>
+                <div
+                  className={"h-[118px] flex items-center text-lg text-[#F2F2F2] justify-center px-5 rounded-lg bg-[#363636]"}>
+                  до 1 млрд
+                </div>
+                <div
+                  className={"h-[118px] flex items-center text-lg text-[#F2F2F2] justify-center px-5 rounded-lg bg-[#363636]"}>
+                  до 5 млрд
                 </div>
               </div>
-
-              <div className="flex items-center gap-2">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8 14.6667C11.6667 14.6667 14.6667 11.6667 14.6667 8C14.6667 4.33333 11.6667 1.33333 8 1.33333C4.33333 1.33333 1.33333 4.33333 1.33333 8C1.33333 11.6667 4.33333 14.6667 8 14.6667Z"
-                    stroke="#EDEDED"
-                    stroke-opacity="0.6"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M8 10.6667V8"
-                    stroke="#EDEDED"
-                    stroke-opacity="0.6"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M7.99609 5.33333H8.00276"
-                    stroke="#EDEDED"
-                    stroke-opacity="0.6"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <span className="text-sm leading-[19px] text-white/60"
-                >Как формируется расчет?</span
-                >
+            </section>
+            <section className="flex flex-col">
+              <div className="rounded-2xl bg-[#1D1D1D] px-6 py-4 w-[420px]">
+                <div className={"flex justify-between items-center  text-sm text-[#999]"}>
+                  <div>Карта</div>
+                  <div>Тариф</div>
+                </div>
+                <hr className={"border-b border-white/10 mt-5"} />
+                {items.map((item, index) => (
+                  <div key={index} className={"flex justify-between border-b border-white/10 py-3 last:border-0"}>
+                    <p className={"flex items-center gap-3"}>
+                      <img src={item.icon} alt="" />
+                      <span className={"text-[#F2F2F2] font-medium text-base font-helvetica-neue"}>{item.card}</span>
+                    </p>
+                    <div className={"flex items-center gap-2"}>
+                      {item.rate2 ? <div className="h-full">
+                        <div className="relative h-full overflow-hidden rounded-xl bg-neutral-900">
+                          <div className="absolute inset-0 bg-stripes animate-stripes"></div>
+                          <div
+                            className=" relative font-bold flex items-center text-lg rounded-xl font-helvetica-neue text-white/60 px-3 py-1 h-[38px]">
+                            {item.rate1}
+                          </div>
+                        </div>
+                      </div> : <div
+                        className={"bg-[#2B2B2B] font-medium flex items-center rounded-[40px] font-helvetica-neue text-white px-3.5 py-1 h-[38px]"}>
+                        {item.rate1}
+                      </div>}
+                      {item.rate2 && <div
+                        className={"bg-[#2B2B2B] font-medium flex items-center rounded-[40px] font-helvetica-neue text-white px-3.5 py-1 h-[38px]"}>
+                        {item.rate2}
+                      </div>}
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-
-            <div className="flex flex-col">
-              <p
-                className="mb-12 text-right text-lg leading-[26px] text-white/60 lg:max-w-[328px] lg:self-end"
-              >
-                Для оборотов от 500 млн действует выгодная
-                <span className="text-button-primary">тарифная скидка</span> для
-                некоторых типов карт
-              </p>
-
-              <div className="rounded-xl bg-card-bg p-6">
-                <table className="w-full">
-                  <thead>
-                  <tr className="border-b border-gray-700">
-                    <th
-                      className="pb-4 text-left text-sm font-medium text-white/60"
-                    >
-                      Карта
-                    </th>
-                    <th
-                      className="pb-4 text-right text-sm font-medium text-white/60"
-                    >
-                      Тариф
-                    </th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr className="border-b border-gray-700">
-                    <td className="flex items-center gap-3 py-4">
-                      <img
-                        src="/images/payment/uzcard.svg"
-                        alt="Uzcard"
-                        className="h-6 w-6"
-                      />
-                      <span className="text-base text-text-primary">Uzcard</span>
-                    </td>
-                    <td className="py-4 text-right text-base text-text-primary">
-                      1%
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-700">
-                    <td className="flex items-center gap-3 py-4">
-                      <img
-                        src="/images/payment/humo.svg"
-                        alt="Humo"
-                        className="h-6 w-6"
-                      />
-                      <span className="text-base text-text-primary">Humo</span>
-                    </td>
-                    <td className="py-4 text-right text-base">
-                      <span className="text-white/60 line-through">1%</span>
-                      <span className="ml-2 text-text-primary">0,5%</span>
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-700">
-                    <td className="flex items-center gap-3 py-4">
-                      <img
-                        src="/images/payment/visa.svg"
-                        alt="Visa"
-                        className="h-6 w-6"
-                      />
-                      <span className="text-base text-text-primary">Visa</span>
-                    </td>
-                    <td className="py-4 text-right text-base">
-                      <span className="text-white/60 line-through">2%</span>
-                      <span className="ml-2 text-text-primary">0,5%</span>
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-700">
-                    <td className="flex items-center gap-3 py-4">
-                      <img
-                        src="/images/payment/mastercard.svg"
-                        alt="Mastercard"
-                        className="h-6 w-6"
-                      />
-                      <span className="text-base text-text-primary"
-                      >Mastercard</span
-                      >
-                    </td>
-                    <td className="py-4 text-right text-base">
-                      <span className="text-white/60 line-through">2%</span>
-                      <span className="ml-2 text-text-primary">0,5%</span>
-                    </td>
-                  </tr>
-                  <tr className="border-b border-gray-700">
-                    <td className="flex items-center gap-3 py-4">
-                      <img
-                        src="/images/payment/mir.svg"
-                        alt="MIR"
-                        className="h-6 w-6"
-                      />
-                      <span className="text-base text-text-primary">MIR</span>
-                    </td>
-                    <td className="py-4 text-right text-base">
-                      <span className="text-white/60 line-through">2%</span>
-                      <span className="ml-2 text-text-primary">0,5%</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="flex items-center gap-3 py-4">
-                      <img
-                        src="/images/payment/unionpay.svg"
-                        alt="UnionPay"
-                        className="h-6 w-6"
-                      />
-                      <span className="text-base text-text-primary"
-                      >UnionPay</span
-                      >
-                    </td>
-                    <td className="py-4 text-right text-base">
-                      <span className="text-white/60 line-through">1%</span>
-                      <span className="ml-2 text-text-primary">0,5%</span>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            </section>
           </div>
         </section>
       </div>
