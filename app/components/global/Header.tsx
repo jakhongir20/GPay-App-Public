@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
+import { useState, useEffect } from "react";
 
 const MENU_ITEMS = [
   { href: "/", label: "Главная" },
@@ -21,26 +22,54 @@ const LOCALE_LABELS: Record<string, string> = {
 };
 
 export default function Header() {
+  const [burgerOpen, setBurgerOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
 
   const handleToggle = () => {
-    // Get current path segments
     const segments = pathname.split("/").filter(Boolean);
     const currentLang = segments[0];
 
-    // Find next language in cycle: uz -> ru -> en -> uz
     const currentIndex = LOCALES.indexOf(currentLang as any);
     const nextIndex = (currentIndex + 1) % LOCALES.length;
     const nextLang = LOCALES[nextIndex];
 
-    // Rebuild path with new lang
     const pathWithoutLang = segments.slice(1).join("/");
     const newPath = `/${nextLang}${pathWithoutLang ? "/" + pathWithoutLang : ""}`;
 
     router.push(newPath);
   };
+
+  const handleMenuToggle = () => {
+    if (burgerOpen) {
+      // Start closing animation
+      setIsClosing(true);
+      // Wait for animation to complete (0.4s is the longest delay)
+      setTimeout(() => {
+        setBurgerOpen(false);
+        setIsClosing(false);
+      }, 450); // Slightly longer than the animation duration
+    } else {
+      setBurgerOpen(true);
+      setIsClosing(false);
+    }
+  };
+
+  // Prevent body scrolling when menu is open or closing
+  useEffect(() => {
+    if (burgerOpen || isClosing) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [burgerOpen, isClosing]);
 
   return (
     <header className="header-main">
@@ -50,7 +79,7 @@ export default function Header() {
             <img src="/images/Logo.svg" alt="Global Pay Logo" className="h-9" />
           </Link>
 
-          <nav className="nav-menu" id="navMenu">
+          <nav className={"nav-menu " + (burgerOpen && !isClosing ? " show" : isClosing ? " closing" : "")}>
             {MENU_ITEMS.map((item, index) => (
               <Link key={index} href={item.href} className="nav-link">{item.label}</Link>
             ))}
@@ -104,8 +133,8 @@ export default function Header() {
             </button>
 
             <button
-              className="btn-hamburger lg:hidden"
-              id="hamburgerBtn"
+              className={`btn-hamburger lg:hidden ${burgerOpen && !isClosing && "active"}`}
+              onClick={handleMenuToggle}
             >
               <div className="hamburger-icon">
                 <span className="hamburger-line"></span>
