@@ -21,6 +21,8 @@ export const ChooseUsSection: FC<Props> = ({ className }) => {
               Нам важно постоянно расширять возможности сервиса
             </p>
           </div>
+          <div className="grid grid-cols-4 gap-1">
+          </div>
           <hr className="mb-10 border-white/10" />
 
           <div className="grid grid-cols-1 gap-x-3 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
