@@ -9,41 +9,34 @@ type Props = {
 
 // Simple Tailwind-based collapse with arrow-down that rotates
 export const Collapse: FC<PropsWithChildren<Props>> = ({
-  title,
-  defaultOpen = false,
-  className = "",
-  children,
-}) => {
+                                                         title,
+                                                         defaultOpen = false,
+                                                         className = "",
+                                                         children,
+                                                       }) => {
   const [open, setOpen] = useState<boolean>(defaultOpen);
 
   return (
-    <div className={`rounded-xl border border-[#1C1C1C] ${className}`}>
+    <div className={`rounded-xl bg-[#141414]  ${className}`}>
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex w-full items-center gap-3 px-4 py-3 text-left"
+        className="flex w-full items-center gap-3 p-4 sm:p-6 text-left"
         aria-expanded={open}
       >
         <svg
-          className={`h-4 w-4 transition-transform ${open ? "rotate-180" : "rotate-0"}`}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M10 12.5a1 1 0 0 1-.707-.293l-4-4a1 1 0 1 1 1.414-1.414L10 10.086l3.293-3.293a1 1 0 1 1 1.414 1.414l-4 4A1 1 0 0 1 10 12.5z"
-            clipRule="evenodd"
-          />
+          className={`h-4 w-4 transition-transform ${open ? "rotate-0" : "-rotate-90"}`}
+          xmlns="http://www.w3.org/2000/svg" width="17" height="9" viewBox="0 0 17 9" fill="none">
+          <path d="M15.75 0.75L8.25 8.25L0.75 0.75" stroke="#EDEDED" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
         </svg>
-        <span className="text-sm text-white">{title}</span>
+        <span className="text-xl  text-[#EDEDED]">{title}</span>
       </button>
 
       {open && (
-        <div className="px-4 pb-4">
-          {/* Keep caller-defined paddings; this just provides container spacing */}
+        <>
           {children}
-        </div>
+        </>
       )}
     </div>
   );

@@ -6,8 +6,8 @@ import Header from "@/app/components/global/Header";
 import Footer from "@/app/components/global/Footer";
 
 export const metadata: Metadata = {
-  title: "Madaniy Meros",
-  description: "Madaniy Meros - Discover the Cultural Heritage of Uzbekistan",
+  title: "Global Pay",
+  description: "Global Pay - Discover the Cultural Heritage of Uzbekistan",
 };
 
 interface Props {

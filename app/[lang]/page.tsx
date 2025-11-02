@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   // const dict = await getDictionary(lang);
 
   return {
-    title: "Madaniy Meros",
-    description: `Madaniy Meros - `,
+    title: "Global Pay",
+    description: `Global Pay - `,
   };
 }
 
