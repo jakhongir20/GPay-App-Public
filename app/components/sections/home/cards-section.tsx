@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useTranslations } from "next-intl";
+import { cn } from "@/app/shared/helpers";
 
 interface Props {
   className?: string;
@@ -87,7 +88,18 @@ export const CardsSection: FC<Props> = ({ className }) => {
             className="rounded-xl bg-card-bg px-4 py-6 lg:col-start-2 lg:row-start-2 xl:col-start-2 xl:row-start-2"
           >
             <div className="flex flex-col justify-between gap-24">
-              <div>0.8%</div>
+              <div className={"space-y-5 max-w-fit"}>
+                <div className={"flex justify-between text-xs font-helvetica-neue-cyr text-[rgba(242,242,242,0.30)]"}>
+                  <span className={""}>0.8%</span>
+                  <span className={""}>0.2%</span>
+                </div>
+                <div className={"flex gap-[9px]"}>
+                  {Array.from({ length: 23 }).map((_, index) => (
+                    <div key={index}
+                         className={cn("bg-button-primary rounded-lg w-1 h-11", index > 12 && "bg-[#242424]")}></div>
+                  ))}
+                </div>
+              </div>
               <div className="flex flex-col justify-between gap-3">
                 <p
                   className="max-w-[235px] text-sm text-white/60 tracking-[0.5px]"
@@ -127,8 +139,10 @@ export const CardsSection: FC<Props> = ({ className }) => {
           </div>
 
           <div
-            className="flex flex-col justify-between rounded-xl bg-card-bg px-4 py-6 lg:col-span-2 lg:row-start-3 xl:col-span-1 xl:col-start-3 xl:row-span-2 xl:row-start-1"
+            className="flex relative flex-col justify-between rounded-xl bg-card-bg px-4 py-6 lg:col-span-2 lg:row-start-3 xl:col-span-1 xl:col-start-3 xl:row-span-2 xl:row-start-1"
           >
+            <img className={"absolute top-7 left-1/2 -translate-x-1/2 w-[95%]"} src="/images/main/line-graphs.svg"
+                 alt="" />
             <div></div>
             <div className="mb-2">
               <p
