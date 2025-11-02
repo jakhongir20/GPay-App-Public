@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { OurProductsSection } from "@/app/components/sections/home";
+import { CasesSection, OurProductsSection } from "@/app/components/sections/home";
 
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
@@ -20,7 +20,7 @@ export default function Home({ params }: { params: { lang: string; }; }) {
       {/*<SolutionBusinessSection />*/}
       <OurProductsSection />
       {/*<ResultsSection />*/}
-      {/*<CasesSection />*/}
+      <CasesSection />
       {/*<ChooseUsSection />*/}
       {/*<RateCalculatorSection />*/}
       {/*<PaymentSolutionSection />*/}
