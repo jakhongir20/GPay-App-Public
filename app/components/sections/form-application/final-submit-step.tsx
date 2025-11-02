@@ -22,7 +22,7 @@ export const FinalSubmitStep: FC<Props> = ({ className }) => {
         </p>
       </div>
       <Collapse title="Информация о бизнесе" defaultOpen className="mb-4">
-        <div className={"sm:p-6 p-4 pt-2 bg-[#141414] rounded-xl"}>
+        <div className={"sm:p-6 p-4 !pt-2 bg-[#141414] rounded-xl"}>
           <form className="w-full space-y-6">
             <div>
               <label
@@ -77,6 +77,12 @@ export const FinalSubmitStep: FC<Props> = ({ className }) => {
               </div>
             </div>
           </form>
+        </div>
+      </Collapse>
+      <hr className={"border-t border-[#1C1C1C] my-8"} />
+      <Collapse title="Данные контактного лица" className="mb-4">
+        <div className={"sm:p-6 p-4 !pt-2 bg-[#141414] rounded-xl"}>
+          {/* form of "Данные контактного лица" */}
         </div>
       </Collapse>
     </section>

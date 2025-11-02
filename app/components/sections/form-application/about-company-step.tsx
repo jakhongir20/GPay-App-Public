@@ -6,7 +6,7 @@ interface Props {
 
 export const AboutCompanyStep: FC<Props> = ({ className }) => {
   return (
-    
+
     <section>
       <div className="flex flex-col">
         <h2 className="text-section-title mb-6 max-w-[600px]">
@@ -16,7 +16,7 @@ export const AboutCompanyStep: FC<Props> = ({ className }) => {
           Заполните данные о компании
         </p>
       </div>
-      <hr className={"border w-full border-[#1C1C1C] my-8"} />
+      <hr className={"border-t w-full border-[#1C1C1C] my-8"} />
       <div className={"p-6 bg-[#141414] rounded-xl"}>
         <h4 className={"text-xl text-text-primary mb-8"}>Информация о бизнесе</h4>
         <form className="w-full space-y-6">
@@ -104,7 +104,7 @@ export const AboutCompanyStep: FC<Props> = ({ className }) => {
           </div>
         </form>
       </div>
-      <hr className={"border w-full border-[#1C1C1C] my-8"} />
+      <hr className={"border-t w-full border-[#1C1C1C] my-8"} />
       {/*second form*/}
       <div className={"p-6 bg-[#141414] rounded-xl"}>
         <h4 className={"text-xl text-text-primary mb-8"}>Данные контактного лица</h4>

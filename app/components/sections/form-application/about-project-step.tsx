@@ -16,7 +16,7 @@ export const AboutProjectStep: FC<Props> = ({ className }) => {
           Расскажите нам о своем бизнесе как можно подробнее
         </p>
       </div>
-      <hr className={"border w-full border-[#1C1C1C] my-8"} />
+      <hr className={"border-t w-full border-[#1C1C1C] my-8"} />
       <div className={"p-6 bg-[#141414] rounded-xl"}>
         <h4 className={"text-xl text-text-primary mb-8"}>На каком этапе ваш проект сейчас?</h4>
         <button className={"bg-button-primary px-3 py-2 text-sm rounded-lg"}>Проект работает</button>

@@ -27,7 +27,7 @@ export const FinancialStep: FC<Props> = ({ className }) => {
           Заполните данные о среднем чеке и оборотах вашего проекта
         </p>
       </div>
-      <hr className={"border w-full border-[#1C1C1C] my-8"} />
+      <hr className={"border-t w-full border-[#1C1C1C] my-8"} />
       <div className={"p-6 bg-[#141414] rounded-xl"}>
         <h4 className={"text-xl text-text-primary mb-8"}>Месячные обороты проекта</h4>
         <form className="w-full space-y-6">
