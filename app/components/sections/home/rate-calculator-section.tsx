@@ -36,12 +36,12 @@ export const RateCalculatorSection: FC<Props> = ({ className }) => {
     <section className="section-padding">
       <div className="container-custom">
         <section className="section-content">
-          <div className={"flex justify-between items-center"}>
-            <h2 className="text-section-title max-w-[500px]">
+          <div className={"flex flex-col lg:flex-row justify-between lg:items-center"}>
+            <h2 className="text-section-title lg:max-w-[500px]">
               Рассчитайте свою процентную ставку к тарифу
             </h2>
             <p
-              className="mb-12 text-right text-lg leading-[26px] text-white/60 lg:max-w-[328px] lg:self-end"
+              className="lg:mb-12 lg:text-right text-lg leading-[26px] text-white/60 lg:max-w-[328px] lg:self-end"
             >
               Для оборотов <span className="text-white"> от 500 млн</span> действует выгодная
               <span className="text-white"> тарифная скидка</span> для

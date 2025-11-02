@@ -12,7 +12,7 @@ export const CabinetFeatures: FC<Props> = ({ className }) => {
           <div
             className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >
-            <h2 className="text-section-title mb-4 max-w-[600px] lg:mb-0">
+            <h2 className="text-section-title mb-4 lg:max-w-[600px] lg:mb-0">
               Возможности <br />
               кабинета
             </h2>

@@ -101,12 +101,12 @@ export const CasesSection: FC<Props> = ({ className }) => {
           <div
             className="mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >
-            <h2 className="text-section-title mb-4 max-w-[600px] lg:mb-0">
-              Кейсы <br />
+            <h2 className="text-section-title mb-4 lg:max-w-[600px] lg:mb-0">
+              Кейсы
               наших клиентов
             </h2>
             <p
-              className="max-w-[440px] text-left text-lg leading-[26px] text-white"
+              className="lg:max-w-[440px] text-left text-lg leading-[26px] text-white"
             >
               Наши решения создают прозрачный платёжный процесс:
               <span className="text-white/60"
@@ -154,7 +154,7 @@ export const CasesSection: FC<Props> = ({ className }) => {
                   <div
                     className={cn(
                       "flex h-full flex-col items-start relative",
-                      index > 0 && "before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-[#232323] before:content-[''] before:-ml-6 md:before:-ml-12",
+                      index > 0 && "sm:before:absolute before:left-0 before:top-0 before:bottom-0 before:w-px before:bg-[#232323] before:content-[''] before:-ml-6 md:before:-ml-6",
                     )}
                   >
                     <div className="mb-3 h-[310px] w-full rounded-lg bg-[#1D1D1D]">

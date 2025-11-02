@@ -64,7 +64,7 @@ export const FaqSection: FC<Props> = ({ className }) => {
     <section className="section-padding">
       <div className="container-custom">
         <section className="section-content">
-          <h2 className="text-section-title mb-10">Часто задаваемые <br /> вопросы</h2>
+          <h2 className="text-section-title mb-10">Часто задаваемые вопросы</h2>
           <section className="">
             {faqItems.map((item, index) => (
               <div key={index}>
@@ -82,7 +82,7 @@ export const FaqSection: FC<Props> = ({ className }) => {
                       onClick={() => toggleItem(index)}
                       className="w-full flex justify-between items-center gap-4  text-left"
                     >
-                      <h4 className="text-xl md:text-2xl text-[#F2F2F2] font-helvetica-neue-cyr">
+                      <h4 className="xs:text-xl text-lg md:text-2xl text-[#F2F2F2] font-helvetica-neue-cyr">
                         {item.question}
                       </h4>
                       <p
@@ -96,7 +96,7 @@ export const FaqSection: FC<Props> = ({ className }) => {
                             fill="none"
                           >
                             <path d="M6 18L18 6M6 6L18 18" stroke="#F2F2F2" strokeWidth="1.5" strokeLinecap="round"
-                              strokeLinejoin="round" />
+                                  strokeLinejoin="round" />
                           </svg>
                         ) : (
                           <svg
@@ -127,7 +127,7 @@ export const FaqSection: FC<Props> = ({ className }) => {
                       <div>
                         {item.answer.map((text, textIndex) => (
                           <PText key={textIndex}
-                            className={item.answer?.length - 1 === textIndex ? "mb-0" : ""}>{text}</PText>
+                                 className={item.answer?.length - 1 === textIndex ? "mb-0" : ""}>{text}</PText>
                         ))}
                       </div>
                     </div>

@@ -7,18 +7,18 @@ interface Props {
 
 export const FormApplication: FC<Props> = ({ className, formAreasActivity = true }) => {
   return (
-    <section className="section-padding py-16">
+    <section className="section-padding">
       <div className="container-custom">
         <section className="section-content gradient-form-bg">
           <div className="flex flex-col gap-10 sm:flex-row">
             <div
               className="flex h-auto flex-col justify-between sm:basis-1/2 sm:gap-4"
             >
-              <h2 className="text-h2 max-w-[590px]">
+              <h2 className="text-h2 md:max-w-[590px] md:mb-auto !mb-6">
                 Получите решение для вашего бизнеса
               </h2>
               <p
-                className="font-helvetica-neue-cyr max-w-[350px] text-lg leading-6 text-white/60"
+                className="font-helvetica-neue-cyr md:max-w-[350px] text-lg leading-6 text-white/60"
               >
                 Пройдите полный процесс регистрации и мы предложим оптимальное
                 решение для вашего бизнеса

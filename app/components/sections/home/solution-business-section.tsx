@@ -48,10 +48,10 @@ export const SolutionBusinessSection: FC<Props> = ({ className }) => {
           <div
             className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >
-            <h2 className="text-section-title mb-4 max-w-[600px] lg:mb-0">
+            <h2 className="text-section-title mb-4 lg:max-w-[600px] lg:mb-0">
               Решения <br /> для разных сфер бизнеса
             </h2>
-            <p className="text-section-subtitle max-w-[398px]">
+            <p className="text-section-subtitle lg:max-w-[398px]">
               Поддерживаем прием и отправку платежей от всех популярных банков
             </p>
           </div>

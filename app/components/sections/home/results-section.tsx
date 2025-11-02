@@ -12,11 +12,11 @@ export const ResultsSection: FC<Props> = ({ className }) => {
           <div
             className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >
-            <h2 className="text-section-title max-w-[600px]">
+            <h2 className="text-section-title lg:max-w-[600px]">
               Вместе достигаем результатов
             </h2>
             <p
-              className="max-w-[328px] text-left text-lg leading-[22px] text-white/60"
+              className="lg:max-w-[328px] text-left text-lg leading-[22px] text-white/60"
             >
               Нам важно постоянно расширять возможности сервиса
             </p>

@@ -64,8 +64,8 @@ export const OurProductsSection: FC<Props> = ({ className }) => {
           <div
             className="mb-8 flex flex-col md:mb-11 lg:flex-row lg:items-end lg:justify-between"
           >
-            <h2 className="text-section-title max-w-[600px]">Наши продукты</h2>
-            <p className="text-section-subtitle max-w-[328px]">
+            <h2 className="text-section-title lg:max-w-[600px]">Наши продукты</h2>
+            <p className="text-section-subtitle lg:max-w-[328px]">
               Нам важно постоянно расширять возможности сервиса
             </p>
           </div>

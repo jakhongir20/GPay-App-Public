@@ -60,11 +60,11 @@ export const ChooseUsSection: FC<Props> = ({ className }) => {
           <div
             className="flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >
-            <h2 className="text-section-title mb-4 max-w-[600px] lg:mb-0">
+            <h2 className="text-section-title mb-4 lg:max-w-[600px] lg:mb-0">
               Почему нас выбирают
             </h2>
             <p
-              className="max-w-[328px] text-left text-lg leading-[26px] text-white/60 lg:text-right"
+              className="lg:max-w-[328px] text-left text-lg leading-[26px] text-white/60 lg:text-right"
             >
               Нам важно постоянно расширять возможности сервиса
             </p>

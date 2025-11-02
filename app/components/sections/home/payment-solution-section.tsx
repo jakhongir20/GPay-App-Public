@@ -22,7 +22,7 @@ export const PaymentSolutionSection: FC<Props> = ({ className }) => {
                   Платежные решения под ваш бизнес по вашему запросу
                 </h2>
                 <p className="mb-12 text-lg leading-[26px] text-white/60">
-                  Принимаем платежи от любых банков <br /> с комиссией от 1%
+                  Принимаем платежи от любых банков с комиссией от 1%
                 </p>
               </div>
               <div
