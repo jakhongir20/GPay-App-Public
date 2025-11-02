@@ -498,3 +498,13 @@ h2 {
 .swiper-button-prev {
   display: none !important;
 }
+
+/* Make Swiper slides equal height */
+.swiper-slide {
+  height: auto;
+  display: flex;
+}
+
+.swiper-slide > * {
+  width: 100%;
+}
