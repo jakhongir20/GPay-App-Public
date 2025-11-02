@@ -70,11 +70,13 @@ export const FaqSection: FC<Props> = ({ className }) => {
               <div key={index}>
                 <div
                   className={cn(
-                    "border-b grid grid-cols-2 px-8 py-6 border-[#232323] overflow-hidden transition-all",
-                    openIndex === index && "mb-0",
+                    "grid md:grid-cols-2 sm:px-8 px-3  sm:py-6 py-4 border-[#232323] overflow-hidden transition-all",
+                    index === faqItems.length - 1 ? "border-b-0" : "border-b",
+                    openIndex === index && "mb-0 bg-[#1C1C1C] rounded-xl border-none",
+                    openIndex === index + 1 && "border-none",
                   )}
                 >
-                  <div></div>
+                  <div className={"md:block hidden"}></div>
                   <div>
                     <button
                       onClick={() => toggleItem(index)}
@@ -83,16 +85,20 @@ export const FaqSection: FC<Props> = ({ className }) => {
                       <h4 className="text-xl md:text-2xl text-[#F2F2F2] font-helvetica-neue-cyr">
                         {item.question}
                       </h4>
-                      {openIndex === index ? (
-                        <p className={"min-w-6 flex justify-center"}>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                               fill="none">
-                            <path d="M6 18L18 6M6 6L18 18" stroke="#F2F2F2" stroke-width="1.5" stroke-linecap="round"
-                                  stroke-linejoin="round" />
+                      <p
+                        className={cn("min-w-6 flex justify-center transition-transform duration-300", openIndex === index && "rotate-90")}>
+                        {openIndex === index ? (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                          >
+                            <path d="M6 18L18 6M6 6L18 18" stroke="#F2F2F2" strokeWidth="1.5" strokeLinecap="round"
+                                  strokeLinejoin="round" />
                           </svg>
-                        </p>
-                      ) : (
-                        <p className={"min-w-6 flex justify-center"}>
+                        ) : (
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="17"
@@ -109,16 +115,22 @@ export const FaqSection: FC<Props> = ({ className }) => {
                               strokeLinejoin="round"
                             />
                           </svg>
-                        </p>
-                      )}
+                        )}
+                      </p>
                     </button>
-                    {openIndex === index && (
-                      <div className="mt-6">
+                    <div
+                      className={cn(
+                        "overflow-hidden transition-all duration-300 ease-in-out",
+                        openIndex === index ? "max-h-[2000px] opacity-100 sm:mt-6 mt-4" : "max-h-0 opacity-0 mt-0",
+                      )}
+                    >
+                      <div>
                         {item.answer.map((text, textIndex) => (
-                          <PText key={textIndex}>{text}</PText>
+                          <PText key={textIndex}
+                                 className={item.answer?.length - 1 === textIndex ? "mb-0" : ""}>{text}</PText>
                         ))}
                       </div>
-                    )}
+                    </div>
                   </div>
                 </div>
                 {/*{index < faqItems.length - 1 && (*/}
@@ -127,8 +139,10 @@ export const FaqSection: FC<Props> = ({ className }) => {
               </div>
             ))}
           </section>
-          <div className="flex justify-center pt-8">
-            <button className="btn-black px-6 py-3 text-sm font-medium">
+          <div className="flex justify-center mt-7">
+            <button
+              className="btn-user mx-auto flex rounded-lg border-[#6A6A6A] bg-[#212121] px-6 py-3"
+            >
               Показать еще
             </button>
           </div>
@@ -138,8 +152,9 @@ export const FaqSection: FC<Props> = ({ className }) => {
   );
 };
 
-export const PText = ({ children }: { children: React.ReactNode; }) => (
-  <p className={"text-[rgba(237,237,237,0.60)] text-lg font-helvetica-neue-cyr mb-6"}>
+export const PText = ({ className, children }: { className?: string, children: React.ReactNode; }) => (
+  <p
+    className={`text-[rgba(237,237,237,0.60)] text-base sm:text-lg font-helvetica-neue-cyr mb-6 last:mb-0 ${className}`}>{children}
     {children}
   </p>
 );
