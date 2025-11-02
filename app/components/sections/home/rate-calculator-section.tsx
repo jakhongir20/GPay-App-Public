@@ -69,13 +69,15 @@ export const RateCalculatorSection: FC<Props> = ({ className }) => {
                 ))}
               </div>
               <h3 className={"text-[#F2F2F2] text-2xl mb-4 mt-10"}>Укажите оборот в год</h3>
-              <div className={"border border-[#282828] rounded-2xl flex items-center gap-1 p-2 md:max-w-fit"}>
+              <div
+                className={"border border-[#282828] rounded-2xl flex items-center gap-1 p-2 overflow-x-auto scrollbar-hide md:overflow-x-visible md:max-w-fit"}>
                 {turnovers.map((turnover) => (
                   <button
                     key={turnover.value}
                     onClick={() => setSelectedTurnover(turnover.value as "100" | "500" | "1000" | "5000")}
                     className={cn(
-                      "h-[118px] w-full md:w-auto flex items-center text-lg text-[#F2F2F2] justify-center rounded-lg px-5 transition-colors",
+                      "h-[118px] flex-shrink-1 flex items-center text-lg text-[#F2F2F2] justify-center rounded-lg px-5 transition-colors",
+                      "sm:min-w-0  w-full",
                       selectedTurnover === turnover.value
                         ? "bg-button-primary"
                         : "bg-[#363636] hover:bg-button-primary",
@@ -133,7 +135,7 @@ export const RateCalculatorSection: FC<Props> = ({ className }) => {
             </svg>
             <span className={"text-[#FAFAFA]/50 text-base font-medium"}>
 
-            Как формируется расчет?
+              Как формируется расчет?
             </span>
           </p>
         </section>
