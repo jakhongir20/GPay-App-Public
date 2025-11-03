@@ -6,7 +6,6 @@ import {
   FaqSection,
   OurProductsSection,
   RateCalculatorSection,
-  ResultsSection,
   SolutionBusinessSection,
 } from "@/app/components/sections/home";
 import { PaymentSolutionSection } from "@/app/components/sections/home/payment-solution-section";
@@ -30,7 +29,7 @@ export default function Home({ params }: { params: { lang: string; }; }) {
       <CardsSection />
       <SolutionBusinessSection />
       <OurProductsSection />
-      <ResultsSection />
+      {/*<ResultsSection />*/}
       <CasesSection />
       <ChooseUsSection title={"Почему нас выбирают"}
                        description={"Нам важно постоянно расширять возможности сервиса"} />
