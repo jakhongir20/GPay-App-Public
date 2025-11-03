@@ -24,7 +24,8 @@ export default defineConfig({
       },
     },
     input: {
-      target: "https://94d4877346c1.ngrok-free.app/swagger.json",
+      target: "../back/swagger.json",
     },
   },
 });
+

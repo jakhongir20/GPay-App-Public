@@ -79,7 +79,7 @@ export const FinalSubmitStep: FC<Props> = ({ className }) => {
           </form>
         </div>
       </Collapse>
-      <hr className={"border-t border-[#1C1C1C] my-8"} />
+      <hr className={"border-t border-[#1C1C1C] sm:my-8 my-6"} />
       <Collapse title="Данные контактного лица" className="mb-4">
         <div className={"sm:p-6 p-4 !pt-2 bg-[#141414] rounded-xl"}>
           {/* form of "Данные контактного лица" */}

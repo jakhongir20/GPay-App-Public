@@ -37,7 +37,7 @@ export const CardsSection: FC<Props> = ({ className }) => {
           <div
             className="rounded-xl bg-card-bg px-4 py-6 lg:col-start-2 lg:row-start-1 xl:col-start-2 xl:row-start-1"
           >
-            <div className="flex flex-col justify-between gap-24">
+            <div className="flex h-full flex-col justify-between gap-24">
               <div
                 className="flex max-w-fit items-center gap-2 rounded-[30px] bg-[#202020] px-2 py-1"
               >
