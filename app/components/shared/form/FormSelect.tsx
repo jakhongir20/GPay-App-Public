@@ -43,6 +43,7 @@ export const FormSelect: FC<FormSelectProps> = ({
             error
               ? "border-red-500 focus:border-red-500 focus:ring-1 focus:ring-red-500"
               : "hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary",
+            props.disabled && "opacity-50 cursor-not-allowed",
             className
           )}
         >

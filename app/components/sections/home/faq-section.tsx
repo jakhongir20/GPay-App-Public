@@ -1,59 +1,17 @@
 "use client";
 
 import { FC, useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/app/shared/helpers";
 
 interface Props {
   className?: string;
 }
 
-interface FaqItem {
-  question: string;
-  answer: string[];
-}
-
-const faqItems: FaqItem[] = [
-  {
-    question: "Что такое интернет эквайринг?",
-    answer: [
-      "Онлайн-эквайринг — это технология, позволяющая принимать оплату за товары и услуги через интернет.",
-      "Когда клиент оплачивает покупку банковской картой или через электронный кошелёк, эквайринговый сервис выступает посредником между вашим сайтом, банком-эмитентом клиента и банком-эквайером, обеспечивая безопасную и мгновенную передачу данных.",
-      "Наше решение автоматизирует этот процесс, позволяя бизнесам любого масштаба принимать онлайн-платежи без сложных интеграций и с полной защитой финансовых операций.",
-    ],
-  },
-  {
-    question: "Насколько безопасны онлайн-платежи через вашу платформу?",
-    answer: [
-      "Наша платформа использует современные технологии шифрования и соответствует международным стандартам безопасности платежей.",
-    ],
-  },
-  {
-    question: "Как происходит подключение к платформе?Насколько безопасны онлайн-платежи через вашу платформу?",
-    answer: [
-      "Наша платформа использует современные технологии шифрования и соответствует международным стандартам безопасности платежей.",
-    ],
-  },
-  {
-    question: "Какие комиссии действуют при приёме онлайн-платежей?",
-    answer: [
-      "Наша платформа использует современные технологии шифрования и соответствует международным стандартам безопасности платежей.",
-    ],
-  },
-  {
-    question: "Можно ли интегрировать эквайринг с внутренней аналитикой компании?",
-    answer: [
-      "Наша платформа использует современные технологии шифрования и соответствует международным стандартам безопасности платежей.",
-    ],
-  },
-  {
-    question: "Как быстро зачисляются средства после оплаты?",
-    answer: [
-      "Наша платформа использует современные технологии шифрования и соответствует международным стандартам безопасности платежей.",
-    ],
-  },
-];
+const faqKeys = ["Q1", "Q2", "Q3", "Q4", "Q5", "Q6"];
 
 export const FaqSection: FC<Props> = ({ className }) => {
+  const t = useTranslations("HomePage.FaqSection");
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleItem = (index: number) => {
@@ -64,14 +22,14 @@ export const FaqSection: FC<Props> = ({ className }) => {
     <section className="section-padding">
       <div className="container-custom">
         <section className="section-content">
-          <h2 className="text-section-title mb-10">Часто задаваемые вопросы</h2>
+          <h2 className="text-section-title mb-10">{t("Title")}</h2>
           <section className="">
-            {faqItems.map((item, index) => (
+            {faqKeys.map((key, index) => (
               <div key={index}>
                 <div
                   className={cn(
                     "grid md:grid-cols-2 sm:px-8 px-3  sm:py-6 py-4 border-[#232323] overflow-hidden transition-all",
-                    index === faqItems.length - 1 ? "border-b-0" : "border-b",
+                    index === faqKeys.length - 1 ? "border-b-0" : "border-b",
                     openIndex === index && "mb-0 bg-[#1C1C1C] rounded-xl border-none",
                     openIndex === index + 1 && "border-none",
                   )}
@@ -83,7 +41,7 @@ export const FaqSection: FC<Props> = ({ className }) => {
                       className="w-full flex justify-between items-center gap-4  text-left"
                     >
                       <h4 className="xs:text-xl text-lg md:text-2xl text-[#F2F2F2] font-helvetica-neue-cyr">
-                        {item.question}
+                        {t(`Questions.${key}.Question`)}
                       </h4>
                       <p
                         className={cn("min-w-6 flex justify-center transition-transform duration-300", openIndex === index && "rotate-90")}>
@@ -125,9 +83,9 @@ export const FaqSection: FC<Props> = ({ className }) => {
                       )}
                     >
                       <div>
-                        {item.answer.map((text, textIndex) => (
+                        {t.raw(`Questions.${key}.Answer`).map((text: string, textIndex: number, arr: string[]) => (
                           <PText key={textIndex}
-                                 className={item.answer?.length - 1 === textIndex ? "mb-0" : ""}>{text}</PText>
+                                 className={arr.length - 1 === textIndex ? "mb-0" : ""}>{text}</PText>
                         ))}
                       </div>
                     </div>
@@ -143,7 +101,7 @@ export const FaqSection: FC<Props> = ({ className }) => {
             <button
               className="btn-user mx-auto flex rounded-lg border-[#6A6A6A] bg-[#212121] px-6 py-3"
             >
-              Показать еще
+              {t("ShowMore")}
             </button>
           </div>
         </section>

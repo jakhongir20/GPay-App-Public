@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -17,44 +18,20 @@ interface Props {
 interface Product {
   id: string;
   icon: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
 }
 
-const products: Product[] = [
-  {
-    id: "1",
-    icon: "/images/our-product/01.svg",
-    title: "Холдирование",
-    description: "Замораживание средств на отдельном счете до завершения сделки",
-  },
-  {
-    id: "2",
-    icon: "/images/our-product/02.svg",
-    title: "Сплитование платежей",
-    description: "Автоматически распределяем суммы, поступающие от покупателя",
-  },
-  {
-    id: "3",
-    icon: "/images/our-product/03.svg",
-    title: "Автосписание",
-    description: "Замораживание средств на отдельном счете до завершения сделки",
-  },
-  {
-    id: "4",
-    icon: "/images/our-product/04.svg",
-    title: "Холдирование",
-    description: "Замораживание средств на отдельном счете до завершения сделки",
-  },
-  {
-    id: "5",
-    icon: "/images/our-product/01.svg",
-    title: "Другая услуга",
-    description: "Описание другой услуги",
-  },
+const productKeys = [
+  { id: "1", icon: "/images/our-product/01.svg", titleKey: "Products.Holding", descriptionKey: "Products.Holding" },
+  { id: "2", icon: "/images/our-product/02.svg", titleKey: "Products.Split", descriptionKey: "Products.Split" },
+  { id: "3", icon: "/images/our-product/03.svg", titleKey: "Products.AutoCharge", descriptionKey: "Products.AutoCharge" },
+  { id: "4", icon: "/images/our-product/04.svg", titleKey: "Products.Holding", descriptionKey: "Products.Holding" },
+  { id: "5", icon: "/images/our-product/01.svg", titleKey: "Products.Other", descriptionKey: "Products.Other" },
 ];
 
 export const OurProductsSection: FC<Props> = ({ className }) => {
+  const t = useTranslations("HomePage.OurProductsSection");
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
@@ -64,9 +41,9 @@ export const OurProductsSection: FC<Props> = ({ className }) => {
           <div
             className="mb-8 flex flex-col md:mb-11 lg:flex-row lg:items-end lg:justify-between"
           >
-            <h2 className="text-section-title lg:max-w-[600px]">Наши продукты</h2>
+            <h2 className="text-section-title lg:max-w-[600px]">{t("Title")}</h2>
             <p className="text-section-subtitle lg:max-w-[328px]">
-              Нам важно постоянно расширять возможности сервиса
+              {t("Description")}
             </p>
           </div>
 
@@ -96,22 +73,22 @@ export const OurProductsSection: FC<Props> = ({ className }) => {
               }}
               className="!pb-4"
             >
-              {products.map((product) => (
+              {productKeys.map((product) => (
                 <SwiperSlide key={product.id} className="!h-auto">
                   <div
                     className="rounded-xl border border-[#222222] bg-[#1C1C1C] p-4 md:p-8 h-full flex flex-col min-h-[320px] md:min-h-[360px]">
                     <div className="mb-20 flex-shrink-0">
-                      <img src={product.icon} alt={product.title} />
+                      <img src={product.icon} alt={t(`${product.titleKey}.Title`)} />
                     </div>
                     <div className="flex items-end justify-between gap-3.5 mt-auto flex-shrink-0">
                       <div className="max-w-[224px]">
                         <h3
                           className="font-helvetica-neue-cyr mb-4 text-xl leading-[28px] tracking-[-0.24px] text-white md:text-2xl">
-                          {product.title}
+                          {t(`${product.titleKey}.Title`)}
                         </h3>
                         <p
                           className="font-helvetica-neue-cyr text-sm font-normal leading-[20px] tracking-[0.32px] text-white/60 md:text-base">
-                          {product.description}
+                          {t(`${product.descriptionKey}.Description`)}
                         </p>
                       </div>
                       <button

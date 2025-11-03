@@ -1,10 +1,187 @@
 {
   "HomePage": {
     "CardsSection": {
-      "Title": "Online payment service for business"
+      "Title": "Online payment service for business",
+      "Description": "We provide reliable payment solutions that solve your business problems",
+      "OnlineStatus": "Online",
+      "Online24": "24/7",
+      "HelpTitle": "Connection help",
+      "HelpDescription": "Technical support that is always available",
+      "CalculatorTitle": "Rate calculator",
+      "CalculatorDescription": "Calculate the rate for your business",
+      "RateLabel": "Rate",
+      "RateValue": "0.8 %",
+      "RateDescription": "For new clients"
+    },
+    "SolutionBusinessSection": {
+      "Title": "Solutions for different business sectors",
+      "Description": "We support receiving and sending payments from all popular banks",
+      "Filters": {
+        "Banks": "Banks"
+      }
+    },
+    "OurProductsSection": {
+      "Title": "Our products",
+      "Description": "It's important for us to constantly expand the service capabilities",
+      "Products": {
+        "Holding": {
+          "Title": "Holding",
+          "Description": "Freezing funds in a separate account until the transaction is completed"
+        },
+        "Split": {
+          "Title": "Payment splitting",
+          "Description": "We automatically distribute amounts received from the buyer"
+        },
+        "AutoCharge": {
+          "Title": "Auto debit",
+          "Description": "Freezing funds in a separate account until the transaction is completed"
+        },
+        "Other": {
+          "Title": "Other service",
+          "Description": "Description of another service"
+        }
+      }
+    },
+    "CasesSection": {
+      "Title": "Our clients' cases",
+      "Description": "Our solutions create a transparent payment process:",
+      "DescriptionSecondary": "from accepting payments and instant transfers to automatic reconciliation and analytics.",
+      "Categories": {
+        "Travel": "Travel",
+        "OnlineStores": "Online stores",
+        "HoReCa": "HoReCa"
+      },
+      "Cases": {
+        "Case1": {
+          "Title": "Online tour booking service",
+          "Description": "TravelUz company connected Global Pay to accept online payments for tours and air tickets. Thanks to integration with banks of Uzbekistan.."
+        }
+      }
+    },
+    "ChooseUsSection": {
+      "Title": "Why choose us",
+      "Description": "It's important for us to constantly expand the service capabilities",
+      "Tools": "Tools",
+      "Features": {
+        "OpenAPI": {
+          "Title": "Open API",
+          "Text": "It's important for us to constantly expand the service capabilities"
+        },
+        "ConstantSupport": {
+          "Title": "Constant support",
+          "Text": "It's important for us to constantly expand the service capabilities"
+        },
+        "FeatureExpansion": {
+          "Title": "Feature expansion",
+          "Text": "It's important for us to constantly expand the service capabilities"
+        },
+        "PaymentSetup": {
+          "Title": "Payment setup",
+          "Text": "It's important for us to constantly expand the service capabilities"
+        }
+      },
+      "FeaturesList": {
+        "Holding": "Fund holding",
+        "Split": "Payment splitting",
+        "AutoCharge": "Auto debit",
+        "Return": "Return"
+      }
+    },
+    "RateCalculatorSection": {
+      "Title": "Calculate your interest rate for the tariff",
+      "Description": "For turnover",
+      "DescriptionFrom": "from 500 million",
+      "DescriptionDiscount": "a favorable tariff discount applies",
+      "DescriptionDiscount2": "for some card types",
+      "CurrencyTitle": "Choose currency",
+      "UZS": "Uzbek soum",
+      "USD": "US Dollar",
+      "TurnoverTitle": "Specify annual turnover",
+      "Turnover100": "up to 100 million",
+      "Turnover500": "up to 500 million",
+      "Turnover1000": "up to 1 billion",
+      "Turnover5000": "up to 5 billion",
+      "CardLabel": "Card",
+      "TariffLabel": "Tariff",
+      "CalculationQuestion": "How is the calculation formed?"
+    },
+    "PaymentSolutionSection": {
+      "Title": "Payment solutions for your business according to your request",
+      "Description": "We accept payments from any banks with a commission from 1%"
+    },
+    "FaqSection": {
+      "Title": "Frequently asked questions",
+      "ShowMore": "Show more",
+      "Questions": {
+        "Q1": {
+          "Question": "What is internet acquiring?",
+          "Answer": [
+            "Online acquiring is a technology that allows accepting payment for goods and services over the internet.",
+            "When a client pays for a purchase with a bank card or through an e-wallet, the acquiring service acts as an intermediary between your website, the client's issuing bank, and the acquiring bank, ensuring secure and instant data transfer.",
+            "Our solution automates this process, allowing businesses of any scale to accept online payments without complex integrations and with full protection of financial operations."
+          ]
+        },
+        "Q2": {
+          "Question": "How secure are online payments through your platform?",
+          "Answer": [
+            "Our platform uses modern encryption technologies and complies with international payment security standards."
+          ]
+        },
+        "Q3": {
+          "Question": "How does connection to the platform happen?",
+          "Answer": [
+            "Our platform uses modern encryption technologies and complies with international payment security standards."
+          ]
+        },
+        "Q4": {
+          "Question": "What commissions apply when accepting online payments?",
+          "Answer": [
+            "Our platform uses modern encryption technologies and complies with international payment security standards."
+          ]
+        },
+        "Q5": {
+          "Question": "Can acquiring be integrated with the company's internal analytics?",
+          "Answer": [
+            "Our platform uses modern encryption technologies and complies with international payment security standards."
+          ]
+        },
+        "Q6": {
+          "Question": "How quickly are funds credited after payment?",
+          "Answer": [
+            "Our platform uses modern encryption technologies and complies with international payment security standards."
+          ]
+        }
+      }
+    },
+    "FormApplication": {
+      "Title": "Get a solution for your business",
+      "Description": "Go through the full registration process and we will offer the optimal solution for your business",
+      "CompanyTypeLabel": "Company type",
+      "CompanyTypePlaceholder": "Select company type",
+      "BusinessCategoryLabel": "Business category",
+      "BusinessCategoryPlaceholder": "Select business category",
+      "BusinessAreasLabel": "Business areas",
+      "BusinessAreasPlaceholder": "Select business areas",
+      "CompanyTypeRequired": "Please select company type",
+      "BusinessCategoryRequired": "Please select business category",
+      "BusinessAreasRequired": "Please select business areas",
+      "Success": "Success.",
+      "Privacy": "Privacy",
+      "Terms": "Terms",
+      "Continue": "Continue",
+      "DataProtected": "All data is protected",
+      "Options": {
+        "Resident": "Resident of the Republic of Uzbekistan",
+        "Bank": "Bank",
+        "MFO": "MFO",
+        "Other": "Other"
+      }
     }
   },
   "brand": "Global Pay",
+  "header": {
+    "connect": "Connect"
+  },
   "nav": {
     "home": "Home",
     "solutions": "Payment solutions",
@@ -14,4 +191,3 @@
     "help": "Help"
   }
 }
-

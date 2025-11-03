@@ -11,6 +11,8 @@ interface Props {
 }
 
 export const Checkbox = ({ id, label, checked, onChange, disabled, className }: Props) => {
+
+  console.log("checked", checked);
   return (
     <label
       htmlFor={id}
@@ -24,38 +26,27 @@ export const Checkbox = ({ id, label, checked, onChange, disabled, className }: 
         disabled={disabled}
         className="peer sr-only"
       />
-
       <span
-        className={[
-          "grid h-5 w-5 place-items-center rounded ",
-          " bg-[#272727]",
+        className={cn(
+          "flex h-5 w-5 items-center justify-center rounded border transition-colors duration-150",
+          "border-[#3A3A3A] bg-[#272727]",
           "shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]",
-          "",
-          // transition-colors duration-150
           // hover/focus
-          "",
           "peer-focus-visible:outline peer-focus-visible:outline-2",
           "peer-focus-visible:outline-offset-2 peer-focus-visible:outline-button-primary",
-          // checked
-          "peer-checked:border peer-checked:border-button-primary",
+          // checked - match ImageCheckbox style
+          "peer-checked:border-[#E9532F] peer-checked:bg-[rgba(233,83,47,0.10)]",
           // disabled
           "peer-disabled:opacity-50 peer-disabled:cursor-not-allowed",
-        ].join(" ")}
+        )}
         aria-hidden
       >
-        <svg
-          viewBox="0 0 20 20"
-          className="h-3.5 w-3.5 opacity-0 transition-opacity peer-checked:opacity-100"
-        >
-          <path
-            d="M5 10.5l3 3 7-7"
-            fill="none"
-            stroke="black"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        {checked && (
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 3L4.5 9L2 6.5" stroke="#E9532F" strokeWidth="1.5" strokeLinecap="round"
+              strokeLinejoin="round" />
+          </svg>
+        )}
       </span>
 
       {/* Label */}

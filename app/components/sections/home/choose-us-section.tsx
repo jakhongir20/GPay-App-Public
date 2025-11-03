@@ -1,22 +1,26 @@
+"use client";
+
 import React, { FC, ReactNode } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/app/shared/helpers";
 
 interface Props {
   className?: string;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   footerContent?: boolean;
 }
 
 export const ChooseUsSection: FC<Props> = ({ className, title, description, footerContent = true }) => {
+  const t = useTranslations("HomePage.ChooseUsSection");
 
   const items = [
     {
-      label: "Инструменты",
-      value1: "Холдирование средств",
-      value2: "Сплитование платежей",
-      value3: "Автосписание",
-      value4: "Возврат",
+      label: t("Tools"),
+      value1: t("FeaturesList.Holding"),
+      value2: t("FeaturesList.Split"),
+      value3: t("FeaturesList.AutoCharge"),
+      value4: t("FeaturesList.Return"),
     },
     {
       label: "Global Pay",
@@ -26,14 +30,14 @@ export const ChooseUsSection: FC<Props> = ({ className, title, description, foot
       value4: "success",
     },
     {
-      label: "Инструменты",
+      label: t("Tools"),
       value1: "crash",
       value2: "success",
       value3: "crash",
       value4: "crash",
     },
     {
-      label: "Инструменты",
+      label: t("Tools"),
       value1: "success",
       value2: "crash",
       value3: "success",
@@ -43,16 +47,20 @@ export const ChooseUsSection: FC<Props> = ({ className, title, description, foot
 
   const items2 = [
     {
-      title: "Открытое API", text: " Нам важно постоянно расширять возможности сервиса",
+      title: t("Features.OpenAPI.Title"), 
+      text: t("Features.OpenAPI.Text"),
     },
     {
-      title: "Постоянная поддержка", text: " Нам важно постоянно расширять возможности сервиса",
+      title: t("Features.ConstantSupport.Title"), 
+      text: t("Features.ConstantSupport.Text"),
     },
     {
-      title: "Расширение функционала", text: " Нам важно постоянно расширять возможности сервиса",
+      title: t("Features.FeatureExpansion.Title"), 
+      text: t("Features.FeatureExpansion.Text"),
     },
     {
-      title: "Настройка выплат", text: " Нам важно постоянно расширять возможности сервиса",
+      title: t("Features.PaymentSetup.Title"), 
+      text: t("Features.PaymentSetup.Text"),
     },
   ];
 
@@ -64,12 +72,12 @@ export const ChooseUsSection: FC<Props> = ({ className, title, description, foot
             className="flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >
             <h2 className="text-section-title mb-4 lg:max-w-[600px] lg:mb-0">
-              {title}
+              {title || t("Title")}
             </h2>
             <p
               className="lg:max-w-[328px] text-left text-lg leading-[26px] text-white/60 lg:text-right"
             >
-              {description}
+              {description || t("Description")}
             </p>
           </div>
           <hr className="my-10 border-white/10" />

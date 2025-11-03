@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/app/shared/helpers";
 import { FilterButtonGroup } from "@/app/components/shared/FilterButtonGroup";
 
@@ -9,10 +10,11 @@ interface Props {
 }
 
 export const SolutionBusinessSection: FC<Props> = ({ className }) => {
+  const t = useTranslations();
   const [activeFilter, setActiveFilter] = useState(0);
 
   const filters = [
-    { label: "Банки", count: 15, active: activeFilter === 0 },
+    { label: t("HomePage.SolutionBusinessSection.Filters.Banks"), count: 15, active: activeFilter === 0 },
     { label: "МФО", count: 15, active: activeFilter === 1 },
     { label: "МФО", count: 15, active: activeFilter === 2 },
     { label: "МФО", count: 15, active: activeFilter === 3 },
@@ -49,10 +51,10 @@ export const SolutionBusinessSection: FC<Props> = ({ className }) => {
             className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >
             <h2 className="text-section-title mb-4 lg:max-w-[600px] lg:mb-0">
-              Решения <br /> для разных сфер бизнеса
+              {t("HomePage.SolutionBusinessSection.Title")}
             </h2>
             <p className="text-section-subtitle lg:max-w-[398px]">
-              Поддерживаем прием и отправку платежей от всех популярных банков
+              {t("HomePage.SolutionBusinessSection.Description")}
             </p>
           </div>
 

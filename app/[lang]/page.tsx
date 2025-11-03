@@ -31,8 +31,7 @@ export default function Home({ params }: { params: { lang: string; }; }) {
       <OurProductsSection />
       {/*<ResultsSection />*/}
       <CasesSection />
-      <ChooseUsSection title={"Почему нас выбирают"}
-                       description={"Нам важно постоянно расширять возможности сервиса"} />
+      <ChooseUsSection />
       <RateCalculatorSection />
       <PaymentSolutionSection />
       <FormApplication />

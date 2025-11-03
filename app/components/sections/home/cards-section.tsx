@@ -30,8 +30,7 @@ export const CardsSection: FC<Props> = ({ className }) => {
             <p
               className="max-w-[277px] relative text-lg font-normal leading-[26px] text-white/60"
             >
-              Предоставляем надежные платежные решения закрывающие проблемы
-              вашего бизнеса
+              {t("HomePage.CardsSection.Description")}
             </p>
           </div>
           <div
@@ -45,9 +44,9 @@ export const CardsSection: FC<Props> = ({ className }) => {
                   className="inline-block h-[5px] w-[5px] rounded-full bg-[#8AE16A]"
                 ></div>
                 <div className="mt-0.5 flex text-sm">
-                  Online
+                  {t("HomePage.CardsSection.OnlineStatus")}
                   <p className="ml-1 text-white/60">
-                    24/7
+                    {t("HomePage.CardsSection.Online24")}
                   </p>
                 </div>
               </div>
@@ -55,13 +54,13 @@ export const CardsSection: FC<Props> = ({ className }) => {
                 <h2
                   className="mb-3 xl:max-w-[235px] text-2xl leading-[27px] text-text-primary"
                 >
-                  Помощь с подключением
+                  {t("HomePage.CardsSection.HelpTitle")}
                 </h2>
                 <div className="flex justify-between gap-2">
                   <p
                     className="max-w-[235px] text-sm text-white/60 tracking-[0.5px]"
                   >
-                    Техническая поддержка, которая всегда на связи
+                    {t("HomePage.CardsSection.HelpDescription")}
                   </p>
                   <button
                     className="btn-black flex h-10 w-10 min-w-10 items-center justify-center p-0"
@@ -107,13 +106,13 @@ export const CardsSection: FC<Props> = ({ className }) => {
                 <p
                   className="max-w-[235px] text-sm text-white/60 tracking-[0.5px]"
                 >
-                  Калькулятор тарифа
+                  {t("HomePage.CardsSection.CalculatorTitle")}
                 </p>
                 <div className="flex items-center justify-between gap-2">
                   <h2
                     className="xl:max-w-[235px] text-2xl leading-[27px] text-text-primary"
                   >
-                    Рассчитайте тариф для вашего бизнеса
+                    {t("HomePage.CardsSection.CalculatorDescription")}
                   </h2>
                   <button
                     className="btn-black flex h-10 w-10 min-w-10 items-center justify-center p-0"
@@ -170,15 +169,15 @@ export const CardsSection: FC<Props> = ({ className }) => {
               <p
                 className="mb-2 max-w-[235px] text-sm tracking-[0.5px] text-white/60"
               >
-                Ставка
+                {t("HomePage.CardsSection.RateLabel")}
               </p>
               <h1
                 className="font-helvetica-neue mb-4 text-[72px] font-bold leading-[72px] tracking-[-4.32px] text-white"
               >
-                0.8 %
+                {t("HomePage.CardsSection.RateValue")}
               </h1>
               <p className="text-base font-normal leading-[20px] opacity-50">
-                Для новых клиентов <span className="block">Global Pay</span>
+                {t("HomePage.CardsSection.RateDescription")} <span className="block">{t("brand")}</span>
               </p>
             </div>
           </div>

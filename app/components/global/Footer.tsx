@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { clearFormDataFromStorage } from "@/app/store/form-store";
 
 export default function Footer() {
   return (
@@ -12,7 +15,9 @@ export default function Footer() {
               <Link href="/"
               ><img src="/images/Logo.svg" alt="Logo"
               /></Link>
-              <div>
+              <div onClick={() => {
+                clearFormDataFromStorage();
+              }}>
                 <img src="/images/PSI_DSS.svg" alt="PSI DSS" className="h-10" />
               </div>
             </div>
@@ -173,7 +178,7 @@ export default function Footer() {
                   >E-mail</a
                   >
                 </li>
-                
+
               </ul>
             </div>
           </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { FC, useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/app/shared/helpers";
 
 interface Props {
@@ -8,19 +9,20 @@ interface Props {
 }
 
 export const RateCalculatorSection: FC<Props> = ({ className }) => {
+  const t = useTranslations("HomePage.RateCalculatorSection");
   const [selectedCurrency, setSelectedCurrency] = useState<"uzs" | "usd">("uzs");
   const [selectedTurnover, setSelectedTurnover] = useState<"100" | "500" | "1000" | "5000">("500");
 
   const currencies = [
-    { value: "uzs", label: "Узбекский сум" },
-    { value: "usd", label: "Доллар США" },
+    { value: "uzs", label: t("UZS") },
+    { value: "usd", label: t("USD") },
   ];
 
   const turnovers = [
-    { value: "100", label: "до 100 млн" },
-    { value: "500", label: "до 500 млн" },
-    { value: "1000", label: "до 1 млрд" },
-    { value: "5000", label: "до 5 млрд" },
+    { value: "100", label: t("Turnover100") },
+    { value: "500", label: t("Turnover500") },
+    { value: "1000", label: t("Turnover1000") },
+    { value: "5000", label: t("Turnover5000") },
   ];
 
   const items = [
@@ -38,20 +40,19 @@ export const RateCalculatorSection: FC<Props> = ({ className }) => {
         <section className="section-content">
           <div className={"flex flex-col lg:flex-row justify-between lg:items-center"}>
             <h2 className="text-section-title lg:max-w-[500px]">
-              Рассчитайте свою процентную ставку к тарифу
+              {t("Title")}
             </h2>
             <p
               className="lg:mb-12 lg:text-right text-lg leading-[26px] text-white/60 lg:max-w-[328px] lg:self-end"
             >
-              Для оборотов <span className="text-white"> от 500 млн</span> действует выгодная
-              <span className="text-white"> тарифная скидка</span> для
-              некоторых типов карт
+              {t("Description")} <span className="text-white"> {t("DescriptionFrom")}</span> {t("DescriptionDiscount")}
+              <span className="text-white"> {t("DescriptionDiscount2")}</span>
             </p>
           </div>
           <hr className={"border-white/10 my-10"} />
           <div className="flex md:flex-row flex-col justify-between gap-4">
             <section className={"md:max-w-[600px] w-full"}>
-              <h3 className={"text-[#F2F2F2] text-2xl mb-4"}>Выберите валюту</h3>
+              <h3 className={"text-[#F2F2F2] text-2xl mb-4"}>{t("CurrencyTitle")}</h3>
               <div className={"bg-[#282828] flex items-center gap-1 rounded-2xl p-1.5 sm:p-2 w-full"}>
                 {currencies.map((currency) => (
                   <button
@@ -68,7 +69,7 @@ export const RateCalculatorSection: FC<Props> = ({ className }) => {
                   </button>
                 ))}
               </div>
-              <h3 className={"text-[#F2F2F2] text-2xl mb-4 mt-10"}>Укажите оборот в год</h3>
+              <h3 className={"text-[#F2F2F2] text-2xl mb-4 mt-10"}>{t("TurnoverTitle")}</h3>
               <div
                 className={"border border-[#282828] rounded-2xl flex items-center gap-1 p-2 overflow-x-auto scrollbar-hide md:overflow-x-visible md:max-w-fit"}>
                 {turnovers.map((turnover) => (
@@ -91,8 +92,8 @@ export const RateCalculatorSection: FC<Props> = ({ className }) => {
             <section className="flex flex-col">
               <div className="rounded-2xl bg-[#1D1D1D] px-6 py-4 w-full md:w-[420px]">
                 <div className={"flex justify-between items-center  text-sm text-[#999]"}>
-                  <div>Карта</div>
-                  <div>Тариф</div>
+                  <div>{t("CardLabel")}</div>
+                  <div>{t("TariffLabel")}</div>
                 </div>
                 <hr className={"border-b border-white/10 mt-5"} />
                 {items.map((item, index) => (
@@ -134,8 +135,7 @@ export const RateCalculatorSection: FC<Props> = ({ className }) => {
               </g>
             </svg>
             <span className={"text-[#FAFAFA]/50 text-base font-medium"}>
-
-              Как формируется расчет?
+              {t("CalculationQuestion")}
             </span>
           </p>
         </section>

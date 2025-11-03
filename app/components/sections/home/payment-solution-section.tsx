@@ -1,10 +1,14 @@
+"use client";
+
 import React, { FC } from "react";
+import { useTranslations } from "next-intl";
 
 interface Props {
   className?: string;
 }
 
 export const PaymentSolutionSection: FC<Props> = ({ className }) => {
+  const t = useTranslations("HomePage.PaymentSolutionSection");
   const payments = [
     { name: "Uzcard", icon: "/images/payment/uzcard-mini.svg" },
     { name: "Humo", icon: "/images/payment/humo-mini.svg" },
@@ -19,10 +23,10 @@ export const PaymentSolutionSection: FC<Props> = ({ className }) => {
             <div className="flex flex-col justify-between">
               <div className="md:mt-8 max-w-[630px]">
                 <h2 className="text-section-title mb-6">
-                  Платежные решения под ваш бизнес по вашему запросу
+                  {t("Title")}
                 </h2>
                 <p className="mb-12 text-lg leading-[26px] text-white/60">
-                  Принимаем платежи от любых банков с комиссией от 1%
+                  {t("Description")}
                 </p>
               </div>
               <div

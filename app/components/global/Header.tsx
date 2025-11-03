@@ -2,17 +2,9 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-
-const MENU_ITEMS = [
-  { href: "/", label: "Главная" },
-  { href: "/cabinet", label: "Платежные решения" },
-  { href: "/about", label: "О компании" },
-  { href: "/team", label: "Разработчикам" },
-  { href: "/form-application", label: "Партнерам" },
-  { href: "/license", label: "Помощь" },
-];
+import { NavLinks } from "./NavLinks";
 
 const LOCALES = ["uz", "ru", "en"] as const;
 const LOCALE_LABELS: Record<string, string> = {
@@ -21,26 +13,49 @@ const LOCALE_LABELS: Record<string, string> = {
   en: "EN",
 };
 
+const LOCALE_NAMES: Record<string, string> = {
+  uz: "O'zbek",
+  ru: "Русский",
+  en: "English",
+};
+
 export default function Header() {
+  const t = useTranslations();
   const [burgerOpen, setBurgerOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
 
-  const handleToggle = () => {
+  const handleLanguageSelect = (newLang: string) => {
     const segments = pathname.split("/").filter(Boolean);
-    const currentLang = segments[0];
-
-    const currentIndex = LOCALES.indexOf(currentLang as any);
-    const nextIndex = (currentIndex + 1) % LOCALES.length;
-    const nextLang = LOCALES[nextIndex];
-
     const pathWithoutLang = segments.slice(1).join("/");
-    const newPath = `/${nextLang}${pathWithoutLang ? "/" + pathWithoutLang : ""}`;
+    const newPath = `/${newLang}${pathWithoutLang ? "/" + pathWithoutLang : ""}`;
 
     router.push(newPath);
+    router.refresh();
+    setLangDropdownOpen(false);
   };
+
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as HTMLElement;
+      if (!target.closest(".language-dropdown-container")) {
+        setLangDropdownOpen(false);
+      }
+    };
+
+    if (langDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [langDropdownOpen]);
 
   const handleMenuToggle = () => {
     if (burgerOpen) {
@@ -75,45 +90,45 @@ export default function Header() {
     <header className="header-main border-b border-[rgba(255,255,255,0.05)]">
       <div className="container-custom h-full">
         <div className="flex h-full items-center justify-between">
-          <Link href="/" className="flex h-11 items-center">
+          <Link href={`/${locale}`} className="flex h-11 items-center">
             <img src="/images/Logo.svg" alt="Global Pay Logo" className="h-9" />
           </Link>
 
           <nav className={"nav-menu " + (burgerOpen && !isClosing ? " show" : isClosing ? " closing" : "")}>
-            {MENU_ITEMS.map((item, index) => {
-              // Remove locale prefix from pathname for comparison
-              const pathSegments = pathname.split("/").filter(Boolean);
-              const pathWithoutLocale = pathSegments.length > 1 ? "/" + pathSegments.slice(1).join("/") : "/";
-              const normalizedItemPath = item.href === "/" ? "/" : item.href;
-              const isActive = pathWithoutLocale === normalizedItemPath ||
-                (item.href === "/" && (pathWithoutLocale === "/" || pathWithoutLocale === ""));
-
-              return (
-                <Link
-                  key={index}
-                  href={item.href}
-                  onClick={handleMenuToggle}
-                  className={`nav-link ${isActive ? "nav-link-active" : ""}`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+            <NavLinks locale={locale} pathname={pathname} onMenuToggle={handleMenuToggle} />
             <br />
             <div
               className="header-actions header-actions-mobile z-50 flex xs:!hidden"
             >
-              <button
-                className="btn-language !xs:w-[84px] relative !w-[76px] overflow-hidden"
-                onClick={handleToggle}
-              >
-                <img
-                  src="/images/globe.svg"
-                  alt="Globe"
-                  className="!xs:-left-[5%] absolute -left-[12%] top-1/2 -translate-y-1/2"
-                />
-                <span className="text-base xs:text-lg">{LOCALE_LABELS[locale] || "UZ"}</span>
-              </button>
+              <div className="language-dropdown-container relative">
+                <button
+                  className="btn-language !xs:w-[84px] relative !w-[76px] overflow-hidden"
+                  onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+                >
+                  <img
+                    src="/images/globe.svg"
+                    alt="Globe"
+                    className="!xs:-left-[5%] absolute -left-[12%] top-1/2 -translate-y-1/2"
+                  />
+                  <span className="text-base xs:text-lg">{LOCALE_LABELS[locale] || "UZ"}</span>
+                </button>
+                {langDropdownOpen && (
+                  <div
+                    className="absolute top-full -right-21 sm:right-0 mt-2 w-[180px] bg-[#1C1C1C] rounded-lg shadow-lg overflow-hidden z-50">
+                    {LOCALES.map((lang) => (
+                      <button
+                        key={lang}
+                        onClick={() => handleLanguageSelect(lang)}
+                        className={`w-full px-4 py-3  text-left text-white text-sm hover:bg-[#2a2a2a] transition-colors ${locale === lang ? "bg-[#2a2a2a]" : ""
+                          }`}
+                      >
+                        <span className="font-medium">{LOCALE_LABELS[lang]}</span>{" "}
+                        <span className="text-white/70">{LOCALE_NAMES[lang]}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
 
               <button
                 className="btn-user flex h-[38px] w-[38px] items-center justify-center xs:h-11 xs:w-11"
@@ -128,19 +143,39 @@ export default function Header() {
           </nav>
 
           <div className="header-actions">
-            <button
-              className="btn-language relative hidden !w-[84px] overflow-hidden xs:flex"
-              onClick={handleToggle}
-            >
-              <img
-                src="/images/globe.svg"
-                alt="Globe"
-                className="absolute -left-[5%] top-1/2 -translate-y-1/2"
-              />
-              <span className="">{LOCALE_LABELS[locale] || "UZ"}</span>
-            </button>
+            <div className="language-dropdown-container relative hidden xs:block">
+              <button
+                className="btn-language relative !w-[84px] overflow-hidden"
+                onClick={() => setLangDropdownOpen(!langDropdownOpen)}
+              >
+                <img
+                  src="/images/globe.svg"
+                  alt="Globe"
+                  className="absolute -left-[5%] top-1/2 -translate-y-1/2"
+                />
+                <span className="">{LOCALE_LABELS[locale] || "UZ"}</span>
+              </button>
+              {langDropdownOpen && (
+                <div
+                  className="absolute top-full right-0 mt-2 w-[128px] bg-[#1C1C1C] rounded-lg shadow-lg overflow-hidden z-50">
+                  {LOCALES.map((lang) => (
+                    <button
+                      key={lang}
+                      onClick={() => handleLanguageSelect(lang)}
+                      className={`w-full px-4 py-3 text-left text-white text-sm flex gap-3 hover:bg-[#2a2a2a] transition-colors ${locale === lang ? "bg-[#2a2a2a]" : ""
+                        }`}
+                    >
+                      <span className="font-medium">{LOCALE_LABELS[lang]}</span>{" "}
+                      <span className="text-white/70">{LOCALE_NAMES[lang]}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
-            <button className="btn-primary" onClick={() => router.push("/form-slug-1")}>Подключить</button>
+            <button className="btn-primary" onClick={() => router.push(`/${locale}/form-slug-1`)}>
+              {t("header.connect")}
+            </button>
 
             <button
               className="btn-user hidden h-[38px] w-[38px] items-center justify-center xs:flex xs:h-11 xs:w-11"

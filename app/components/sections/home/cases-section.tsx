@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, useRef, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
@@ -20,71 +21,72 @@ interface Props {
 interface Case {
   id: string;
   image: string;
-  category: string;
+  categoryKey: string;
   avatar: string;
   role: string;
   name: string;
-  title: string;
-  description: string;
+  titleKey: string;
+  descriptionKey: string;
 }
 
-const cases: Case[] = [
+const caseKeys = [
   {
     id: "1",
     image: "",
-    category: "Путешествия",
+    categoryKey: "Travel",
     avatar: "/images/teams/01.png",
     role: "Head of Product Uzum",
     name: "Иванова Наталья",
-    title: "Онлайн-сервис бронирования туров",
-    description: "Компания TravelUz подключила Global Pay для приёма онлайн-оплат за туры и авиабилеты. Благодаря интеграции с банками Узбекистана..",
+    titleKey: "Case1",
+    descriptionKey: "Case1",
   },
   {
     id: "2",
     image: "",
-    category: "Путешествия",
+    categoryKey: "Travel",
     avatar: "/images/teams/01.png",
     role: "Head of Product Uzum",
     name: "Иванова Наталья",
-    title: "Онлайн-сервис бронирования туров",
-    description: "Компания TravelUz подключила Global Pay для приёма онлайн-оплат за туры и авиабилеты. Благодаря интеграции с банками Узбекистана..",
+    titleKey: "Case1",
+    descriptionKey: "Case1",
   },
   {
     id: "3",
     image: "",
-    category: "Онлайн-магазины",
+    categoryKey: "OnlineStores",
     avatar: "/images/teams/01.png",
     role: "Head of Product Uzum",
     name: "Иванова Наталья",
-    title: "Онлайн-сервис бронирования туров",
-    description: "Компания TravelUz подключила Global Pay для приёма онлайн-оплат за туры и авиабилеты. Благодаря интеграции с банками Узбекистана..",
+    titleKey: "Case1",
+    descriptionKey: "Case1",
   },
   {
     id: "4",
     image: "",
-    category: "HoReCa",
+    categoryKey: "HoReCa",
     avatar: "/images/teams/01.png",
     role: "Head of Product Uzum",
     name: "Иванова Наталья",
-    title: "Онлайн-сервис бронирования туров",
-    description: "Компания TravelUz подключила Global Pay для приёма онлайн-оплат за туры и авиабилеты. Благодаря интеграции с банками Узбекистана..",
+    titleKey: "Case1",
+    descriptionKey: "Case1",
   },
 ];
 
-const categories = [
-  { label: "Путешествия", count: 1 },
-  { label: "Онлайн-магазины", count: 2 },
-  { label: "HoReCa", count: 2 },
+const categoryKeys = [
+  { key: "Travel", count: 1 },
+  { key: "OnlineStores", count: 2 },
+  { key: "HoReCa", count: 2 },
 ];
 
 export const CasesSection: FC<Props> = ({ className, sectionClassName }) => {
+  const t = useTranslations("HomePage.CasesSection");
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeCategory, setActiveCategory] = useState(0);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
-  const filterItems = categories.map((cat, index) => ({
-    label: cat.label,
+  const filterItems = categoryKeys.map((cat, index) => ({
+    label: t(`Categories.${cat.key}`),
     count: cat.count,
     active: activeCategory === index,
     onClick: () => setActiveCategory(index),
@@ -103,16 +105,14 @@ export const CasesSection: FC<Props> = ({ className, sectionClassName }) => {
             className="mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >
             <h2 className="text-section-title mb-4 lg:max-w-[600px] lg:mb-0">
-              Кейсы
-              наших клиентов
+              {t("Title")}
             </h2>
             <p
               className="lg:max-w-[440px] text-left text-lg leading-[26px] text-white"
             >
-              Наши решения создают прозрачный платёжный процесс:
+              {t("Description")}
               <span className="text-white/60"
-              > от приёма платежей и мгновенных переводов до автоматической
-                сверки и аналитики.
+              > {t("DescriptionSecondary")}
               </span>
             </p>
           </div>
@@ -150,7 +150,7 @@ export const CasesSection: FC<Props> = ({ className, sectionClassName }) => {
               }}
               className="!pb-4"
             >
-              {cases.map((caseItem, index) => (
+              {caseKeys.map((caseItem, index) => (
                 <SwiperSlide key={caseItem.id} className="!h-auto">
                   <div
                     className={cn(
@@ -162,7 +162,7 @@ export const CasesSection: FC<Props> = ({ className, sectionClassName }) => {
                       {caseItem.image && (
                         <img
                           src={caseItem.image}
-                          alt={caseItem.title}
+                          alt={t(`Cases.${caseItem.titleKey}.Title`)}
                           className="h-full w-full rounded-lg object-cover"
                         />
                       )}
@@ -170,7 +170,7 @@ export const CasesSection: FC<Props> = ({ className, sectionClassName }) => {
                     <div
                       className="rounded-[50px] border border-[#343434] px-3 py-1.5 text-sm font-medium text-white/60"
                     >
-                      {caseItem.category}
+                      {t(`Categories.${caseItem.categoryKey}`)}
                     </div>
                     <div className="my-6 flex items-center gap-6">
                       <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-full">
@@ -184,10 +184,10 @@ export const CasesSection: FC<Props> = ({ className, sectionClassName }) => {
                       </div>
                     </div>
                     <h4 className="mb-3.5 text-xl text-[#D4D4D4]">
-                      {caseItem.title}
+                      {t(`Cases.${caseItem.titleKey}.Title`)}
                     </h4>
                     <p className="text-sm font-normal text-white/60">
-                      {caseItem.description}
+                      {t(`Cases.${caseItem.descriptionKey}.Description`)}
                     </p>
                   </div>
                 </SwiperSlide>

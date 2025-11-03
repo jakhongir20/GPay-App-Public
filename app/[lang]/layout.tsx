@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import notFound from "./not-found";
 import Header from "@/app/components/global/Header";
 import Footer from "@/app/components/global/Footer";
+import { QueryProvider } from "@/app/providers/query-provider";
 
 export const metadata: Metadata = {
   title: "Global Pay",
@@ -25,19 +26,22 @@ export default async function RootLayout({ children, params }: Props) {
   try {
     messages = await import(`../../messages/${lang}.json`);
   } catch {
-    messages = await import("../../messages/uz.json");
+    // Fallback to default locale (ru) if the requested locale file doesn't exist
+    messages = await import("../../messages/ru.json");
   }
 
   return (
-    <NextIntlClientProvider
-      messages={messages.default}
-      locale={lang}
-      now={new Date()}
-      timeZone="Asia/Tashkent"
-    >
-      <Header />
-      <main className="">{children}</main>
-      <Footer />
-    </NextIntlClientProvider>
+    <QueryProvider>
+      <NextIntlClientProvider
+        messages={messages.default}
+        locale={lang}
+        now={new Date()}
+        timeZone="Asia/Tashkent"
+      >
+        <Header />
+        <main className="">{children}</main>
+        <Footer />
+      </NextIntlClientProvider>
+    </QueryProvider>
   );
 }

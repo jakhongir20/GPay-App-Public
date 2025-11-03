@@ -1,10 +1,187 @@
 {
   "HomePage": {
     "CardsSection": {
-      "Title": "Biznes uchun onlayn to'lov xizmati"
+      "Title": "Biznes uchun onlayn to'lov xizmati",
+      "Description": "Biznesingiz muammolarini hal qiluvchi ishonchli to'lov yechimlarini taqdim etamiz",
+      "OnlineStatus": "Online",
+      "Online24": "24/7",
+      "HelpTitle": "Ulanishda yordam",
+      "HelpDescription": "Har doim aloqada bo'lgan texnik yordam",
+      "CalculatorTitle": "Tarif kalkulyatori",
+      "CalculatorDescription": "Biznesingiz uchun tarifni hisoblang",
+      "RateLabel": "Narz",
+      "RateValue": "0.8 %",
+      "RateDescription": "Yangi mijozlar uchun"
+    },
+    "SolutionBusinessSection": {
+      "Title": "Turli biznes sohalari uchun yechimlar",
+      "Description": "Barcha mashhur banklardan to'lovlarni qabul qilish va yuborishni qo'llab-quvvatlaymiz",
+      "Filters": {
+        "Banks": "Banklar"
+      }
+    },
+    "OurProductsSection": {
+      "Title": "Bizning mahsulotlarimiz",
+      "Description": "Xizmat imkoniyatlarini doim kengaytirish biz uchun muhim",
+      "Products": {
+        "Holding": {
+          "Title": "Hold",
+          "Description": "Bitim tugaguncha alohida hisobda mablag'larni muzlatish"
+        },
+        "Split": {
+          "Title": "To'lovlarni bo'lish",
+          "Description": "Xaridordan keladigan summalarni avtomatik tarqatamiz"
+        },
+        "AutoCharge": {
+          "Title": "Avtomatik yechib olish",
+          "Description": "Bitim tugaguncha alohida hisobda mablag'larni muzlatish"
+        },
+        "Other": {
+          "Title": "Boshqa xizmat",
+          "Description": "Boshqa xizmat tavsifi"
+        }
+      }
+    },
+    "CasesSection": {
+      "Title": "Mijozlarimizning holatlari",
+      "Description": "Bizning yechimlarimiz shaffof to'lov jarayonini yaratadi:",
+      "DescriptionSecondary": "to'lovlarni qabul qilish va tezkor o'tkazmalardan tortib, avtomatik tekshirish va tahlilgacha.",
+      "Categories": {
+        "Travel": "Sayohat",
+        "OnlineStores": "Onlayn do'konlar",
+        "HoReCa": "HoReCa"
+      },
+      "Cases": {
+        "Case1": {
+          "Title": "Turlarni bron qilish onlayn xizmati",
+          "Description": "TravelUz kompaniyasi Global Pay-ni turlar va aviabiletlar uchun onlayn to'lovlarni qabul qilish uchun uladi. O'zbekiston banklari bilan integratsiya tufayli.."
+        }
+      }
+    },
+    "ChooseUsSection": {
+      "Title": "Nima uchun bizni tanlashadi",
+      "Description": "Xizmat imkoniyatlarini doim kengaytirish biz uchun muhim",
+      "Tools": "Vositalar",
+      "Features": {
+        "OpenAPI": {
+          "Title": "Ochiq API",
+          "Text": "Xizmat imkoniyatlarini doim kengaytirish biz uchun muhim"
+        },
+        "ConstantSupport": {
+          "Title": "Doimiy yordam",
+          "Text": "Xizmat imkoniyatlarini doim kengaytirish biz uchun muhim"
+        },
+        "FeatureExpansion": {
+          "Title": "Funksionallikni kengaytirish",
+          "Text": "Xizmat imkoniyatlarini doim kengaytirish biz uchun muhim"
+        },
+        "PaymentSetup": {
+          "Title": "To'lovlarni sozlash",
+          "Text": "Xizmat imkoniyatlarini doim kengaytirish biz uchun muhim"
+        }
+      },
+      "FeaturesList": {
+        "Holding": "Mablag'larni hold qilish",
+        "Split": "To'lovlarni bo'lish",
+        "AutoCharge": "Avtomatik yechib olish",
+        "Return": "Qaytarish"
+      }
+    },
+    "RateCalculatorSection": {
+      "Title": "Tarifingizga foiz stavkasini hisoblang",
+      "Description": "Aylanma uchun",
+      "DescriptionFrom": "500 milliondan",
+      "DescriptionDiscount": "foydali tarif chegirmasi",
+      "DescriptionDiscount2": "ayrim karta turlari uchun",
+      "CurrencyTitle": "Valyutani tanlang",
+      "UZS": "O'zbek so'mi",
+      "USD": "AQSH dollari",
+      "TurnoverTitle": "Yil davomidagi aylanishni ko'rsating",
+      "Turnover100": "100 milliongacha",
+      "Turnover500": "500 milliongacha",
+      "Turnover1000": "1 milliardgacha",
+      "Turnover5000": "5 milliardgacha",
+      "CardLabel": "Karta",
+      "TariffLabel": "Tarif",
+      "CalculationQuestion": "Hisob-kitob qanday shakllanadi?"
+    },
+    "PaymentSolutionSection": {
+      "Title": "Biznesingizga mos, so'rovingiz bo'yicha to'lov yechimlari",
+      "Description": "Har qanday banklardan 1% dan boshlab komissiya bilan to'lovlarni qabul qilamiz"
+    },
+    "FaqSection": {
+      "Title": "Tez-tez so'raladigan savollar",
+      "ShowMore": "Ko'proq ko'rsatish",
+      "Questions": {
+        "Q1": {
+          "Question": "Internet ekvayring nima?",
+          "Answer": [
+            "Onlayn ekvayring - bu internet orqali mahsulot va xizmatlar uchun to'lov qabul qilish imkonini beruvchi texnologiya.",
+            "Mijoz bank kartasi yoki elektron hamyon orqali xaridni to'laganda, ekvayring xizmati sizning veb-saytingiz, mijozning emissiya banki va ekvayring banki o'rtasida vositachi rolini o'ynaydi va ma'lumotlarning xavfsiz va darhol uzatilishini ta'minlaydi.",
+            "Bizning yechimimiz bu jarayonni avtomatlashtiradi va har qanday o'lchamdagi bizneslarga murakkab integratsiyalar va moliyaviy operatsiyalarning to'liq himoyasi bilan onlayn to'lovlarni qabul qilish imkonini beradi."
+          ]
+        },
+        "Q2": {
+          "Question": "Platformangiz orqali onlayn to'lovlar qanchalik xavfsiz?",
+          "Answer": [
+            "Bizning platformamiz zamonaviy shifrlash texnologiyalaridan foydalanadi va to'lovlar xavfsizligi bo'yicha xalqaro standartlarga javob beradi."
+          ]
+        },
+        "Q3": {
+          "Question": "Platformaga ulanish qanday amalga oshiriladi?",
+          "Answer": [
+            "Bizning platformamiz zamonaviy shifrlash texnologiyalaridan foydalanadi va to'lovlar xavfsizligi bo'yicha xalqaro standartlarga javob beradi."
+          ]
+        },
+        "Q4": {
+          "Question": "Onlayn to'lovlarni qabul qilishda qanday komissiyalar qo'llaniladi?",
+          "Answer": [
+            "Bizning platformamiz zamonaviy shifrlash texnologiyalaridan foydalanadi va to'lovlar xavfsizligi bo'yicha xalqaro standartlarga javob beradi."
+          ]
+        },
+        "Q5": {
+          "Question": "Ekvayringni kompaniyaning ichki tahlili bilan integratsiya qilish mumkinmi?",
+          "Answer": [
+            "Bizning platformamiz zamonaviy shifrlash texnologiyalaridan foydalanadi va to'lovlar xavfsizligi bo'yicha xalqaro standartlarga javob beradi."
+          ]
+        },
+        "Q6": {
+          "Question": "To'lovdan keyin mablag'lar qanchalik tez hisobga o'tkaziladi?",
+          "Answer": [
+            "Bizning platformamiz zamonaviy shifrlash texnologiyalaridan foydalanadi va to'lovlar xavfsizligi bo'yicha xalqaro standartlarga javob beradi."
+          ]
+        }
+      }
+    },
+    "FormApplication": {
+      "Title": "Biznesingiz uchun yechim oling",
+      "Description": "To'liq ro'yxatdan o'tish jarayonidan o'ting va biznesingiz uchun eng maqbul yechimni taklif qilamiz",
+      "CompanyTypeLabel": "Kompaniya turi",
+      "CompanyTypePlaceholder": "Kompaniya turini tanlang",
+      "BusinessCategoryLabel": "Biznes kategoriyasi",
+      "BusinessCategoryPlaceholder": "Biznes kategoriyasini tanlang",
+      "BusinessAreasLabel": "Faoliyat sohalari",
+      "BusinessAreasPlaceholder": "Faoliyat sohalarini tanlang",
+      "CompanyTypeRequired": "Iltimos, kompaniya turini tanlang",
+      "BusinessCategoryRequired": "Iltimos, biznes kategoriyasini tanlang",
+      "BusinessAreasRequired": "Iltimos, faoliyat sohalarini tanlang",
+      "Success": "Muvaffaqiyatli.",
+      "Privacy": "Maxfiylik",
+      "Terms": "Shartlar",
+      "Continue": "Davom etish",
+      "DataProtected": "Barcha ma'lumotlar himoyalangan",
+      "Options": {
+        "Resident": "O'zbekiston Respublikasi rezidenti",
+        "Bank": "Bank",
+        "MFO": "MFO",
+        "Other": "Boshqa"
+      }
     }
   },
   "brand": "Global Pay",
+  "header": {
+    "connect": "Ulanish"
+  },
   "nav": {
     "home": "Bosh sahifa",
     "solutions": "To'lov yechimlari",
@@ -14,4 +191,3 @@
     "help": "Yordam"
   }
 }
-

@@ -1,9 +1,12 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { FormSelect } from "@/app/components/shared/form";
+import { useFormStore } from "@/app/store/form-store";
 
 interface Props {
   className?: string;
@@ -16,41 +19,103 @@ interface FormData {
   businessAreas?: string;
 }
 
-const companyTypeOptions = [
-  { value: "resident", label: "Резидент Республики Узбекистан" },
-  { value: "bank", label: "Банк" },
-  { value: "mfo", label: "МФО" },
-  { value: "other", label: "Другое" },
+// Static data for company types
+const staticCompanyTypes = [
+  {
+    id: "cmhhq162400072tjyh4qru3xd",
+    type: "RESIDENT",
+    displayName: "Резидент Республики Узбекистан",
+    description: "Резидент Республики Узбекистан",
+    isActive: true,
+    sortOrder: 1,
+  },
 ];
 
-const businessCategoryOptions = [
-  { value: "resident", label: "Резидент Республики Узбекистан" },
-  { value: "bank", label: "Банк" },
-  { value: "mfo", label: "МФО" },
-  { value: "other", label: "Другое" },
-];
-
-const businessAreasOptions = [
-  { value: "resident", label: "Резидент Республики Узбекистан" },
-  { value: "bank", label: "Банк" },
-  { value: "mfo", label: "МФО" },
-  { value: "other", label: "Другое" },
+// Static data for business categories
+const staticBusinessCategories = [
+  {
+    id: "cmhgpaiku00012toghuicwisp",
+    name: "Business Category Ru",
+    nameUz: "Business Category Ru",
+    description: "Business Descrption",
+    isActive: true,
+    sortOrder: 1,
+  },
+  {
+    id: "cmhhq227v00082tjyyjh10m8h",
+    name: "Здоровье",
+    nameUz: "Здоровье",
+    description: "Здоровье",
+    isActive: true,
+    sortOrder: 1,
+  },
 ];
 
 export const FormApplication: FC<Props> = ({ className, formAreasActivity = true }) => {
+  const t = useTranslations("HomePage.FormApplication");
   const router = useRouter();
+  const params = useParams();
+  const lang = params?.lang as string || "ru";
+  const { setFormData } = useFormStore();
+
+  // Transform company types to options format
+  const companyTypeOptions = useMemo(() => {
+    return staticCompanyTypes
+      .filter((item) => item.isActive !== false)
+      .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+      .map((item) => ({
+        value: item.id,
+        label: item.displayName || item.type || "",
+      }));
+  }, []);
+
+  // Transform business categories to options format (language-aware)
+  const businessCategoryOptions = useMemo(() => {
+    return staticBusinessCategories
+      .filter((item) => item.isActive !== false)
+      .sort((a, b) => (a.sortOrder || 0) - (b.sortOrder || 0))
+      .map((item) => {
+        const label = lang === "uz" && item.nameUz ? item.nameUz : item.name || item.nameUz || "";
+        return {
+          value: item.id,
+          label: label,
+        };
+      });
+  }, [lang]);
+
+  // Placeholder for business areas (empty for now)
+  const businessAreasOptions = useMemo(() => {
+    return [];
+  }, []);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>({
     mode: "onBlur",
+    defaultValues: {
+      companyType: "",
+      businessCategory: "",
+      businessAreas: "",
+    },
   });
 
   const onSubmit = (data: FormData) => {
-    console.log("Form data:", data);
-    // Handle form submission
-    router.push("/form-slug-1");
+    // Validate that required fields are selected
+    if (!data.companyType || !data.businessCategory) {
+      return;
+    }
+
+    // Store form data in Zustand store
+    setFormData({
+      companyType: data.companyType,
+      businessCategory: data.businessCategory,
+      businessAreas: data.businessAreas,
+    });
+
+    // Navigate to form-slug-1 with lang parameter
+    router.push(`/${lang}/form-slug-1`);
   };
 
   return (
@@ -62,48 +127,47 @@ export const FormApplication: FC<Props> = ({ className, formAreasActivity = true
               className="flex h-auto flex-col justify-between sm:basis-1/2 sm:gap-4"
             >
               <h2 className="text-h2 md:max-w-[590px] md:mb-auto !mb-6">
-                Получите решение для вашего бизнеса
+                {t("Title")}
               </h2>
               <p
                 className="font-helvetica-neue-cyr md:max-w-[350px] text-lg leading-6 text-white/60"
               >
-                Пройдите полный процесс регистрации и мы предложим оптимальное
-                решение для вашего бизнеса
+                {t("Description")}
               </p>
             </div>
             <div className="sm:basis-1/2">
               <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
                 <FormSelect
-                  label="Тип компании"
+                  label={t("CompanyTypeLabel")}
                   required
                   register={register("companyType", {
-                    required: "Пожалуйста, выберите тип компании",
+                    required: t("CompanyTypeRequired"),
                   })}
                   options={companyTypeOptions}
-                  placeholder="Резидент Республики Узбекистан"
+                  placeholder={t("CompanyTypePlaceholder") || "Выберите тип компании"}
                   error={errors.companyType}
                 />
 
                 <FormSelect
-                  label="Категория бизнеса"
+                  label={t("BusinessCategoryLabel")}
                   required
                   register={register("businessCategory", {
-                    required: "Пожалуйста, выберите категорию бизнеса",
+                    required: t("BusinessCategoryRequired"),
                   })}
                   options={businessCategoryOptions}
-                  placeholder="Резидент Республики Узбекистан"
+                  placeholder={t("BusinessCategoryPlaceholder") || "Выберите категорию бизнеса"}
                   error={errors.businessCategory}
                 />
 
                 {formAreasActivity && (
                   <FormSelect
-                    label="Сферы деятельности"
+                    label={t("BusinessAreasLabel")}
                     required
                     register={register("businessAreas", {
-                      required: "Пожалуйста, выберите сферы деятельности",
+                      required: t("BusinessAreasRequired"),
                     })}
                     options={businessAreasOptions}
-                    placeholder="Резидент Республики Узбекистан"
+                    placeholder={t("BusinessAreasPlaceholder") || "Выберите сферы деятельности"}
                     error={errors.businessAreas}
                   />
                 )}
@@ -126,15 +190,15 @@ export const FormApplication: FC<Props> = ({ className, formAreasActivity = true
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-green-400">Успешно.</p>
+                    <p className="text-sm font-medium text-green-400">{t("Success")}</p>
                     <div
                       className="mt-1 flex items-center gap-4 text-xs text-white/60"
                     >
                       <span className="cursor-pointer hover:text-white"
-                      >Конфиденциальность</span
+                      >{t("Privacy")}</span
                       >
                       <span className="cursor-pointer hover:text-white"
-                      >Условия</span
+                      >{t("Terms")}</span
                       >
                     </div>
                   </div>
@@ -144,7 +208,7 @@ export const FormApplication: FC<Props> = ({ className, formAreasActivity = true
                   type="submit"
                   className="h-12 w-full rounded-lg bg-button-primary text-base font-medium text-white transition-colors"
                 >
-                  Продолжить
+                  {t("Continue")}
                 </button>
 
                 <div className="flex items-center justify-center gap-2">
@@ -155,7 +219,7 @@ export const FormApplication: FC<Props> = ({ className, formAreasActivity = true
                   />
                   <span
                     className="font-helvetica-neue-cyr text-sm font-normal text-[#8AE16A]"
-                  >Все данные защищены</span
+                  >{t("DataProtected")}</span
                   >
                 </div>
               </form>
