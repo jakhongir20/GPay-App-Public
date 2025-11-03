@@ -35,7 +35,7 @@ export const FinalSubmitStep: FC<Props> = ({ className }) => {
         <img src={"/images/status.svg"} className={"w-16 h-16"} />
       </div>
       <div className="flex flex-col mb-10">
-        <h2 className="text-section-title mb-6 max-w-[600px]">
+        <h2 className="text-section-title mb-4 lg:mb-6 max-w-[600px]">
           Ваша заявка готова!
         </h2>
         <p className="text-section-subtitle max-w-[450px]">

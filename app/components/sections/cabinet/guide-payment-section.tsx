@@ -17,7 +17,7 @@ export const GuidePaymentSection: FC<Props> = ({ className }) => {
           >
             <h2 className="text-section-title lg:max-w-[600px]">Данные, чеки и аналитика всегда под рукой, где бы вы ни
               были</h2>
-            <p className="text-section-subtitle lg:max-w-[440px]">
+            <p className="text-section-subtitle lg:max-w-[440px] text-lg">
               Создан для того, чтобы управлять финансами просто и прозрачно
             </p>
           </div>

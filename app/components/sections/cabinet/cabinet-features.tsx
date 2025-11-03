@@ -13,12 +13,12 @@ export const CabinetFeatures: FC<Props> = ({ className }) => {
             className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >
             <h2 className="text-section-title mb-4 lg:max-w-[600px] lg:mb-0">
-              Возможности <br />
+              Возможности
               кабинета
             </h2>
-            <p className="text-section-subtitle max-w-[440px]">
+            <p className="text-section-subtitle lg:max-w-[440px] text-lg">
               Создан для того, чтобы
-              <span className="text-white">
+              <span className="text-white ml-1">
                 управлять финансами просто и прозрачно</span
               >
             </p>

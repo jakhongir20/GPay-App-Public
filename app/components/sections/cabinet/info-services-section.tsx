@@ -10,7 +10,7 @@ export const InfoServicesSection: FC<Props> = ({ className }) => {
       <div className="container-custom">
         <section className="section-content">
           <div className="mb-10 flex flex-col sm:mb-16">
-            <h2 className="text-section-title mb-6 max-w-[600px]">
+            <h2 className="text-section-title mb-4 lg:mb-6 max-w-[600px]">
               Личный кабинет мерчанта
             </h2>
             <p className="text-section-subtitle">

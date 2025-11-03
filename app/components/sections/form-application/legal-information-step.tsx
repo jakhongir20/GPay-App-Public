@@ -9,7 +9,7 @@ export const LegalInformationStep: FC<Props> = ({ className }) => {
   return (
     <section>
       <div className="flex flex-col">
-        <h2 className="text-section-title mb-6 max-w-[600px]">
+        <h2 className="text-section-title mb-4 lg:mb-6 max-w-[600px]">
           Юридическая информация
         </h2>
         <p className="text-section-subtitle">

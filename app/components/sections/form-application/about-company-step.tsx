@@ -9,7 +9,7 @@ export const AboutCompanyStep: FC<Props> = ({ className }) => {
 
     <section>
       <div className="flex flex-col">
-        <h2 className="text-section-title mb-6 max-w-[600px]">
+        <h2 className="text-section-title mb-4 lg:mb-6 max-w-[600px]">
           О компании
         </h2>
         <p className="text-section-subtitle">

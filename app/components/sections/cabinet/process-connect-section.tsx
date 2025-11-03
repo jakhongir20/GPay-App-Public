@@ -46,21 +46,22 @@ export const ProcessConnectSection: FC<Props> = ({ className }) => {
               </div>
             </div>
           </div>
-          <div className={"grid md:grid-cols-4 gap-3 xs:grid-cols-2"}>
+          <div className={"grid md:grid-cols-4 gap-3 md:gap-y-0 gap-y-4 xs:grid-cols-2 items-stretch"}>
             {items.map((item, index) => (
-              <div key={index}>
+              <div key={index} className="flex flex-col  h-full">
                 <div className={`mb-3 bg-button-primary rounded-lg h-1 ${index > 1 && "opacity-20"}`}></div>
-                <div className={"bg-[#1C1C1C] flex flex-col gap-[258px] rounded-lg p-4"}>
+                <div
+                  className={"bg-[#1C1C1C] flex flex-col gap-[140px] sm:gap-[258px] justify-between flex-1 rounded-lg p-4"}>
                   <div className={"flex justify-between items-center"}>
                     <span className={"text-[28px] text-[rgba(242,242,242,0.95)]"}>0{index + 1}</span>
                     <div className={"flex items-center gap-2"}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <path d="M7.83594 4.66602V8.16602L10.1693 9.33268" stroke="#F2F2F2" stroke-opacity="0.5"
-                              stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M7.83594 4.66602V8.16602L10.1693 9.33268" stroke="#F2F2F2" strokeOpacity="0.5"
+                              strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
                         <path
                           d="M7.83333 13.9997C11.055 13.9997 13.6667 11.388 13.6667 8.16634C13.6667 4.94468 11.055 2.33301 7.83333 2.33301C4.61167 2.33301 2 4.94468 2 8.16634C2 11.388 4.61167 13.9997 7.83333 13.9997Z"
-                          stroke="#F2F2F2" stroke-opacity="0.5" stroke-width="1.75" stroke-linecap="round"
-                          stroke-linejoin="round" />
+                          stroke="#F2F2F2" strokeOpacity="0.5" strokeWidth="1.75" strokeLinecap="round"
+                          strokeLinejoin="round" />
                       </svg>
                       <span className={"text-sm text-[rgba(242,242,242,0.50)]"}>2 часа</span>
                     </div>
