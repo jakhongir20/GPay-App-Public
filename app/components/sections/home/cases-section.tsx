@@ -14,6 +14,7 @@ import "swiper/css/navigation";
 
 interface Props {
   className?: string;
+  sectionClassName?: string;
 }
 
 interface Case {
@@ -76,7 +77,7 @@ const categories = [
   { label: "HoReCa", count: 2 },
 ];
 
-export const CasesSection: FC<Props> = ({ className }) => {
+export const CasesSection: FC<Props> = ({ className, sectionClassName }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeCategory, setActiveCategory] = useState(0);
   const [isBeginning, setIsBeginning] = useState(true);
@@ -97,7 +98,7 @@ export const CasesSection: FC<Props> = ({ className }) => {
   return (
     <section className="section-padding">
       <div className="container-custom">
-        <div className="section-content">
+        <div className={`section-content ${sectionClassName}`}>
           <div
             className="mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >

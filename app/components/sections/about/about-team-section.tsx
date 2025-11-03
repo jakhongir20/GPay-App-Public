@@ -1,21 +1,11 @@
-"use client";
-
-import { FC, useState } from "react";
-import { FilterButtonGroup } from "@/app/components/shared/FilterButtonGroup";
+import { FC } from "react";
 import { TeamMemberCard } from "@/app/components/shared/TeamMemberCard";
 
 interface Props {
   className?: string;
 }
 
-const filterItems = [
-  { label: "Все", count: 15 },
-  { label: "МФО", count: 15 },
-  { label: "МФО", count: 15 },
-  { label: "МФО", count: 15 },
-];
-
-export const teamMembers = [
+const teamMembers = [
   { id: "1", image: "/images/teams/01.png", name: "Адмиралов Тимур", role: "Head of Product" },
   { id: "2", image: "/images/teams/01.png", name: "Адмиралов Тимур", role: "Head of Product" },
   { id: "3", image: "/images/teams/01.png", name: "Адмиралов Тимур", role: "Head of Product" },
@@ -26,25 +16,16 @@ export const teamMembers = [
   { id: "8", image: "/images/teams/01.png", name: "Адмиралов Тимур", role: "Head of Product" },
 ];
 
-export const TeamsSection: FC<Props> = ({ className }) => {
-  const [activeIndex, setActiveIndex] = useState(0); // "Все 15" is active by default
-
-  const items = filterItems.map((item, index) => ({
-    ...item,
-    active: activeIndex === index,
-    onClick: () => setActiveIndex(index),
-  }));
-
+export const AboutTeamSection: FC<Props> = ({ className }) => {
   return (
     <section className="section-padding">
       <div className="container-custom">
-        <section className="section-content">
-          <h1 className="text-h1">Наша команда</h1>
-          <div className="mb-10">
-            <FilterButtonGroup items={items} />
-          </div>
+        <section className={"section-content bg-transparent px-0 px-0 xs:px-10 md:px-16"}>
+          <h2 className="text-h2 lg:max-w-[60%]">
+            Все это создает и поддерживает команда настоящих профессионалов
+          </h2>
           <div className="grid grid-cols-2 justify-end gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 md:grid-cols-4">
-            {teamMembers.map((member) => (
+            {teamMembers?.map((member) => (
               <TeamMemberCard key={member.id} member={member} />
             ))}
           </div>

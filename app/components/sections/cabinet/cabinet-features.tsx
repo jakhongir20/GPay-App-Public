@@ -1,10 +1,30 @@
-import { FC } from "react";
+"use client";
+
+import { FC, useState } from "react";
+import { FilterButtonGroup } from "@/app/components/shared/FilterButtonGroup";
 
 interface Props {
   className?: string;
 }
 
+const filterItems = [
+  { label: "Авторизация" },
+  { label: "Главный экран" },
+  { label: "МФО 15" },
+  { label: "МФО 15" },
+  { label: "МФО 15" },
+  { label: "МФО 15" },
+];
+
 export const CabinetFeatures: FC<Props> = ({ className }) => {
+  const [activeIndex, setActiveIndex] = useState(1); // "Главный экран" is active by default
+
+  const items = filterItems.map((item, index) => ({
+    ...item,
+    active: activeIndex === index,
+    onClick: () => setActiveIndex(index),
+  }));
+
   return (
     <section className="section-padding">
       <div className="container-custom">
@@ -24,13 +44,8 @@ export const CabinetFeatures: FC<Props> = ({ className }) => {
             </p>
           </div>
 
-          <div className="mb-10 flex flex-wrap gap-1.5">
-            <button className="btn-black">Авторизация</button>
-            <button className="btn-primary rounded-[34px]">Главный экран</button>
-            <button className="btn-black">МФО 15</button>
-            <button className="btn-black">МФО 15</button>
-            <button className="btn-black">МФО 15</button>
-            <button className="btn-black">МФО 15</button>
+          <div className="mb-10">
+            <FilterButtonGroup items={items} />
           </div>
 
           <div className="mb-16 max-w-[500px] space-y-4">

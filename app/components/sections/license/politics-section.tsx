@@ -6,7 +6,7 @@ interface Props {
 
 export const PoliticsSection: FC<Props> = ({ className }) => {
   return (
-    <section className="section-padding py-16">
+    <section className="section-padding">
       <div className="container-custom">
         <h2 className="text-h2">Политики и условия</h2>
         <div className="grid grid-cols-1 gap-3 xs:grid-cols-2 md:grid-cols-4">
