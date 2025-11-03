@@ -6,7 +6,7 @@ export default function FormSlug3Page() {
   return (
     <section className="section-padding">
       <div className="container-custom">
-        <section className="section-content bg-transparent !p-0">
+        <section className="section-content bg-transparent !px-0">
           <div className={"grid md:grid-cols-[328px_1fr_284px] gap-y-8 gap-x-3"}>
             <FormAsideSteps step={3} />
             <AboutProjectStep />

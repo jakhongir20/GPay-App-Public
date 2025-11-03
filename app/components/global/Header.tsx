@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const MENU_ITEMS = [
   { href: "/", label: "Главная" },
@@ -11,7 +11,7 @@ const MENU_ITEMS = [
   { href: "/about", label: "О компании" },
   { href: "/team", label: "Разработчикам" },
   { href: "/form-application", label: "Партнерам" },
-  { href: "#", label: "Помощь" },
+  { href: "/license", label: "Помощь" },
 ];
 
 const LOCALES = ["uz", "ru", "en"] as const;
@@ -81,7 +81,7 @@ export default function Header() {
 
           <nav className={"nav-menu " + (burgerOpen && !isClosing ? " show" : isClosing ? " closing" : "")}>
             {MENU_ITEMS.map((item, index) => (
-              <Link key={index} href={item.href} className="nav-link">{item.label}</Link>
+              <Link key={index} href={item.href} onClick={handleMenuToggle} className="nav-link">{item.label}</Link>
             ))}
             <br />
             <div

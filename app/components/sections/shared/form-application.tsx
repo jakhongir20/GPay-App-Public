@@ -1,8 +1,9 @@
 "use client";
 
 import { FC } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
-import { FormInput, FormSelect } from "@/app/components/shared/form";
+import { FormSelect } from "@/app/components/shared/form";
 
 interface Props {
   className?: string;
@@ -37,6 +38,7 @@ const businessAreasOptions = [
 ];
 
 export const FormApplication: FC<Props> = ({ className, formAreasActivity = true }) => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -48,6 +50,7 @@ export const FormApplication: FC<Props> = ({ className, formAreasActivity = true
   const onSubmit = (data: FormData) => {
     console.log("Form data:", data);
     // Handle form submission
+    router.push("/form-slug-1");
   };
 
   return (
