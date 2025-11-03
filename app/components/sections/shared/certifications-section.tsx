@@ -2,14 +2,15 @@ import { FC } from "react";
 
 interface Props {
   className?: string;
+  title: string;
 }
 
-export const CertificationsSection: FC<Props> = ({ className }) => {
+export const CertificationsSection: FC<Props> = ({ className, title }) => {
   return (
     <section className="section-padding">
       <div className="container-custom">
         <section className={"section-content bg-transparent px-0 px-0 xs:px-10 md:px-16"}>
-          <h2 className="text-h2">Официальные лицензии</h2>
+          <h2 className="text-h2">{title}</h2>
           <div className="grid grid-cols-2 justify-end gap-4 sm:grid-cols-4 sm:gap-6">
             <div className="flex h-full flex-col justify-between">
               <div className="h-full w-full">

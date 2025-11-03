@@ -14,15 +14,18 @@ export default function AboutPage({ params }: { params: { lang: string } }) {
   const s = strings[params.lang] ?? strings.en;
   return (
     <div className="">
-      <PromoBanner />
+      <PromoBanner
+        title={"Global Pay — ваш партнёр в безопасных онлайн-платежах"}
+        description={"Создаём инфраструктуру интернет-эквайринга для бизнеса Узбекистана"}
+      />
       <CabinetBannerSection />
       <AboutInfoSection />
       <AboutTeamSection />
-      <CertificationsSection />
+      <CertificationsSection title={"Официальные лицензии"} />
       {/*<div className="container-custom">*/}
       {/*  <hr className="border-[#232323]" />*/}
       {/*</div>*/}
-      <CertificationsSection />
+      <CertificationsSection title={"Сертификаты и соответствия"} />
       <PoliticsSection />
       <CasesSection sectionClassName={"bg-transparent px-0 xs:px-10 md:px-16"} />
     </div>

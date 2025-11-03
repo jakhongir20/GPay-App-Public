@@ -2,9 +2,11 @@ import { FC } from "react";
 
 interface Props {
   className?: string;
+  title: string;
+  description: string;
 }
 
-export const PromoBanner: FC<Props> = ({ className }) => {
+export const PromoBanner: FC<Props> = ({ className, title, description }) => {
   return (
     <section className="section-padding">
       <div
@@ -12,13 +14,14 @@ export const PromoBanner: FC<Props> = ({ className }) => {
       >
         <div className="flex flex-col items-center gap-[112px] md:gap-[124px]">
           <div className="text-center">
-            <h1 className="text-h1 max-w-[892px]">
-              Global Pay — ваш партнёр в безопасных онлайн-платежах
+            <h1 className="text-h1 !mb-6 max-w-[892px]">
+              {title}
             </h1>
             <p
               className="mx-auto max-w-[342px] text-center text-sm leading-[21px] tracking-[-0.16px] text-white/60 md:max-w-[482px] md:text-base"
             >
-              Создаём инфраструктуру интернет-эквайринга для бизнеса Узбекистана
+              {description}
+
             </p>
           </div>
           <div
