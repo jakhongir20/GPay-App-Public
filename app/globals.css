@@ -171,6 +171,7 @@ h2 {
     font-style: normal;
     font-weight: 400;
     line-height: 21px;
+    border-radius: 8px;
     letter-spacing: 0.16px;
     transition: all 0.3s ease;
   }
@@ -187,6 +188,14 @@ h2 {
 
     .nav-link:hover {
       background: #1c1c1c;
+    }
+
+    .nav-link-active {
+      background: #1c1c1c;
+    }
+
+    .nav-link-active:hover {
+      background: #2a2a2a;
     }
   }
   .nav-link-active {
@@ -242,10 +251,12 @@ h2 {
 
     .nav-menu .nav-link,
     .nav-menu .header-actions-mobile {
-      @apply px-0 py-3 text-lg font-normal text-white hover:text-gray-300;
+      @apply py-1.5 px-3 text-lg font-normal text-white hover:text-gray-300;
       display: block;
+      height: auto;
       transform: translateX(-20px);
       opacity: 0;
+      margin-top: 10px !important;
       transition: all 0.3s ease-in-out;
     }
 

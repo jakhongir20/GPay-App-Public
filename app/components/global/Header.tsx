@@ -72,7 +72,7 @@ export default function Header() {
   }, [burgerOpen, isClosing]);
 
   return (
-    <header className="header-main">
+    <header className="header-main border-b border-[rgba(255,255,255,0.05)]">
       <div className="container-custom h-full">
         <div className="flex h-full items-center justify-between">
           <Link href="/" className="flex h-11 items-center">
@@ -80,9 +80,25 @@ export default function Header() {
           </Link>
 
           <nav className={"nav-menu " + (burgerOpen && !isClosing ? " show" : isClosing ? " closing" : "")}>
-            {MENU_ITEMS.map((item, index) => (
-              <Link key={index} href={item.href} onClick={handleMenuToggle} className="nav-link">{item.label}</Link>
-            ))}
+            {MENU_ITEMS.map((item, index) => {
+              // Remove locale prefix from pathname for comparison
+              const pathSegments = pathname.split("/").filter(Boolean);
+              const pathWithoutLocale = pathSegments.length > 1 ? "/" + pathSegments.slice(1).join("/") : "/";
+              const normalizedItemPath = item.href === "/" ? "/" : item.href;
+              const isActive = pathWithoutLocale === normalizedItemPath ||
+                (item.href === "/" && (pathWithoutLocale === "/" || pathWithoutLocale === ""));
+
+              return (
+                <Link
+                  key={index}
+                  href={item.href}
+                  onClick={handleMenuToggle}
+                  className={`nav-link ${isActive ? "nav-link-active" : ""}`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <br />
             <div
               className="header-actions header-actions-mobile z-50 flex xs:!hidden"
@@ -124,7 +140,7 @@ export default function Header() {
               <span className="">{LOCALE_LABELS[locale] || "UZ"}</span>
             </button>
 
-            <button className="btn-primary">Подключить</button>
+            <button className="btn-primary" onClick={() => router.push("/form-slug-1")}>Подключить</button>
 
             <button
               className="btn-user hidden h-[38px] w-[38px] items-center justify-center xs:flex xs:h-11 xs:w-11"

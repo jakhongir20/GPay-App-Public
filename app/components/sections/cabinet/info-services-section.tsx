@@ -1,10 +1,13 @@
+"use client";
 import { FC } from "react";
+import { useRouter } from "next/navigation";
 
 interface Props {
   className?: string;
 }
 
 export const InfoServicesSection: FC<Props> = ({ className }) => {
+  const router = useRouter();
   return (
     <section className="section-padding relative z-10">
       <div className="container-custom">
@@ -17,7 +20,7 @@ export const InfoServicesSection: FC<Props> = ({ className }) => {
               Следите за платежами, аналитикой и финансами в одном месте
             </p>
           </div>
-          <button className="btn-primary mb-10">Подключить</button>
+          <button className="btn-primary mb-10" onClick={() => router.push("/form-slug-1")}>Подключить</button>
 
           <div
             className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 md:grid-cols-4"
