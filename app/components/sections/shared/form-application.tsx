@@ -1,11 +1,55 @@
+"use client";
+
 import { FC } from "react";
+import { useForm } from "react-hook-form";
+import { FormInput, FormSelect } from "@/app/components/shared/form";
 
 interface Props {
   className?: string;
   formAreasActivity?: boolean;
 }
 
+interface FormData {
+  companyType: string;
+  businessCategory: string;
+  businessAreas?: string;
+}
+
+const companyTypeOptions = [
+  { value: "resident", label: "Резидент Республики Узбекистан" },
+  { value: "bank", label: "Банк" },
+  { value: "mfo", label: "МФО" },
+  { value: "other", label: "Другое" },
+];
+
+const businessCategoryOptions = [
+  { value: "resident", label: "Резидент Республики Узбекистан" },
+  { value: "bank", label: "Банк" },
+  { value: "mfo", label: "МФО" },
+  { value: "other", label: "Другое" },
+];
+
+const businessAreasOptions = [
+  { value: "resident", label: "Резидент Республики Узбекистан" },
+  { value: "bank", label: "Банк" },
+  { value: "mfo", label: "МФО" },
+  { value: "other", label: "Другое" },
+];
+
 export const FormApplication: FC<Props> = ({ className, formAreasActivity = true }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    mode: "onBlur",
+  });
+
+  const onSubmit = (data: FormData) => {
+    console.log("Form data:", data);
+    // Handle form submission
+  };
+
   return (
     <section className="section-padding">
       <div className="container-custom">
@@ -25,75 +69,41 @@ export const FormApplication: FC<Props> = ({ className, formAreasActivity = true
               </p>
             </div>
             <div className="sm:basis-1/2">
-              <form className="w-full space-y-6">
-                <div>
-                  <label
-                    className="mb-2 block text-base tracking-[-0.16px] text-white/60"
-                  >
-                    Тип компании <span className="text-text-primary">*</span>
-                  </label>
-                  <div className="relative">
-                    <select
-                      className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
-                    >
-                      <option value="">Резидент Республики Узбекистан</option>
-                      <option value="bank">Банк</option>
-                      <option value="mfo">МФО</option>
-                      <option value="other">Другое</option>
-                    </select>
-                    <img
-                      src="/images/icon/arrow-down.svg"
-                      alt="Dropdown"
-                      className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2"
-                    />
-                  </div>
-                </div>
+              <form onSubmit={handleSubmit(onSubmit)} className="w-full space-y-6">
+                <FormSelect
+                  label="Тип компании"
+                  required
+                  register={register("companyType", {
+                    required: "Пожалуйста, выберите тип компании",
+                  })}
+                  options={companyTypeOptions}
+                  placeholder="Резидент Республики Узбекистан"
+                  error={errors.companyType}
+                />
 
-                <div>
-                  <label
-                    className="mb-2 block text-base tracking-[-0.16px] text-white/60"
-                  >
-                    Категория бизнеса <span className="text-text-primary">*</span>
-                  </label>
-                  <div className="relative">
-                    <select
-                      className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
-                    >
-                      <option value="">Резидент Республики Узбекистан</option>
-                      <option value="bank">Банк</option>
-                      <option value="mfo">МФО</option>
-                      <option value="other">Другое</option>
-                    </select>
-                    <img
-                      src="/images/icon/arrow-down.svg"
-                      alt="Dropdown"
-                      className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2"
-                    />
-                  </div>
-                </div>
+                <FormSelect
+                  label="Категория бизнеса"
+                  required
+                  register={register("businessCategory", {
+                    required: "Пожалуйста, выберите категорию бизнеса",
+                  })}
+                  options={businessCategoryOptions}
+                  placeholder="Резидент Республики Узбекистан"
+                  error={errors.businessCategory}
+                />
 
-                {formAreasActivity && <div>
-                  <label
-                    className="mb-2 block text-base tracking-[-0.16px] text-white/60"
-                  >
-                    Сферы деятельности <span className="text-text-primary">*</span>
-                  </label>
-                  <div className="relative">
-                    <select
-                      className="w-full appearance-none rounded-lg bg-[#212121] px-4 py-4 pr-10 text-white/60 outline-none transition-colors hover:border-gray-500 focus:border-button-primary focus:ring-1 focus:ring-button-primary"
-                    >
-                      <option value="">Резидент Республики Узбекистан</option>
-                      <option value="bank">Банк</option>
-                      <option value="mfo">МФО</option>
-                      <option value="other">Другое</option>
-                    </select>
-                    <img
-                      src="/images/icon/arrow-down.svg"
-                      alt="Dropdown"
-                      className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2"
-                    />
-                  </div>
-                </div>}
+                {formAreasActivity && (
+                  <FormSelect
+                    label="Сферы деятельности"
+                    required
+                    register={register("businessAreas", {
+                      required: "Пожалуйста, выберите сферы деятельности",
+                    })}
+                    options={businessAreasOptions}
+                    placeholder="Резидент Республики Узбекистан"
+                    error={errors.businessAreas}
+                  />
+                )}
                 <hr className="border-[#232323]" />
 
                 <div

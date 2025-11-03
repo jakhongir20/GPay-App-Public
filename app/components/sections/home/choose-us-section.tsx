@@ -3,9 +3,12 @@ import { cn } from "@/app/shared/helpers";
 
 interface Props {
   className?: string;
+  title: string;
+  description: string;
+  footerContent?: boolean;
 }
 
-export const ChooseUsSection: FC<Props> = ({ className }) => {
+export const ChooseUsSection: FC<Props> = ({ className, title, description, footerContent = true }) => {
 
   const items = [
     {
@@ -61,12 +64,12 @@ export const ChooseUsSection: FC<Props> = ({ className }) => {
             className="flex flex-col lg:flex-row lg:items-end lg:justify-between"
           >
             <h2 className="text-section-title mb-4 lg:max-w-[600px] lg:mb-0">
-              Почему нас выбирают
+              {title}
             </h2>
             <p
               className="lg:max-w-[328px] text-left text-lg leading-[26px] text-white/60 lg:text-right"
             >
-              Нам важно постоянно расширять возможности сервиса
+              {description}
             </p>
           </div>
           <hr className="my-10 border-white/10" />
@@ -133,21 +136,22 @@ export const ChooseUsSection: FC<Props> = ({ className }) => {
             ))
             }
           </div>
-          <div className="grid grid-cols-1 gap-x-3 mt-14 sm:mt-[72px] gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
-            {items2.map((item, index) => (
-              <div key={index} className="flex gap-3 items-start">
-                <div className="sm:h-6 h-4 sm:min-w-6 min-w-4 rounded bg-[#303030]"></div>
-                <div className="flex flex-col gap-2 sm:gap-4">
-                  <h4
-                    className="sm:text-lg text-base tracking-[-0.54px] font-helvetica-neue text-[#D4D4D4]"> {item.title}</h4>
-                  <p className="sm:text-sm text-xs font-helvetica-neue text-white/60">
-                    {item.text}
-                  </p>
+          {footerContent &&
+            <div className="grid grid-cols-1 gap-x-3 mt-14 sm:mt-[72px] gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
+              {items2.map((item, index) => (
+                <div key={index} className="flex gap-3 items-start">
+                  <div className="sm:h-6 h-4 sm:min-w-6 min-w-4 rounded bg-[#303030]"></div>
+                  <div className="flex flex-col gap-2 sm:gap-4">
+                    <h4
+                      className="sm:text-lg text-base tracking-[-0.54px] font-helvetica-neue text-[#D4D4D4]"> {item.title}</h4>
+                    <p className="sm:text-sm text-xs font-helvetica-neue text-white/60">
+                      {item.text}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))
-            }
-          </div>
+              ))
+              }
+            </div>}
         </section>
       </div>
     </section>
